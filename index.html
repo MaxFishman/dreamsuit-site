@@ -12,16 +12,18 @@
   <meta name="theme-color" content="#05070E" />
   <meta name="color-scheme" content="dark" />
 
-  <!-- Swap this single line + /CNAME when the final domain is live -->
-  <link rel="canonical" href="https://dreamsleeve.com/" />
+  <!-- Absolute URLs below (canonical, og:url, og:image, twitter:image, JSON-LD) point at the
+       GitHub Pages project URL. If you add a custom domain, swap this host in those lines +
+       CNAME. All other asset paths are relative, so they work on any host/subpath. -->
+  <link rel="canonical" href="https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/" />
 
   <!-- ==== OPEN GRAPH ==== -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DreamSleeve" />
   <meta property="og:title" content="DreamSleeve: Synchronized Dual-Haptic Embodiment" />
   <meta property="og:description" content="One synchronized signal (TENS + piezo) that gates needle distress at the source, across pediatric immunizations and adult self-injection (GLP-1, Type 1 Diabetes insulin). Nobody else achieves dual-haptic embodiment." />
-  <meta property="og:url" content="https://dreamsleeve.com/" />
-  <meta property="og:image" content="https://dreamsleeve.com/assets/og-image.png" />
+  <meta property="og:url" content="https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/" />
+  <meta property="og:image" content="https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="DreamSleeve: a glowing cyan wireframe sleeve on an arm, beside the words Synchronized dual-haptic embodiment." />
@@ -30,7 +32,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="DreamSleeve: Synchronized Dual-Haptic Embodiment" />
   <meta name="twitter:description" content="An arm-worn sleeve that fuses TENS + piezo into one signal to gate needle distress, for kids' vaccines and adult GLP-1 / insulin self-injections alike." />
-  <meta name="twitter:image" content="https://dreamsleeve.com/assets/og-image.png" />
+  <meta name="twitter:image" content="https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/assets/og-image.png" />
   <meta name="twitter:image:alt" content="DreamSleeve: a glowing wireframe sleeve on an arm, dual-haptic neurostimulation." />
 
   <!-- ==== ICONS / MANIFEST ==== -->
@@ -53,16 +55,16 @@
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://dreamsleeve.com/#org",
+        "@id": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/#org",
         "name": "DreamSleeve",
-        "url": "https://dreamsleeve.com/",
-        "logo": "https://dreamsleeve.com/assets/favicon-32.png",
+        "url": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/",
+        "logo": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/assets/favicon-32.png",
         "description": "DreamSleeve builds synchronized dual-haptic wearables that gate needle distress across the lifespan, from pediatric immunizations to adult self-injection."
       },
       {
         "@type": "Product",
         "name": "DreamSleeve",
-        "brand": { "@id": "https://dreamsleeve.com/#org" },
+        "brand": { "@id": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/#org" },
         "category": "Medical wearable / procedural pain management",
         "description": "An arm-worn sleeve that fuses TENS neurostimulation and piezo-haptic texture into one synchronized signal to mitigate needle distress, procedural anxiety, and muscle guarding across pediatric immunizations and adult self-injections including GLP-1 regimens and Type 1 Diabetes insulin. Pediatric sessions are gamified: children defeat the pathogen their vaccine protects against. Positioned as an FDA General Wellness product.",
         "audience": { "@type": "MedicalAudience", "audienceType": "Pediatric clinicians, caregivers, and families; adults self-injecting GLP-1 or insulin" }
@@ -765,10 +767,8 @@
           The deck covers the science, the clinical plan, the regulatory path, the team,
           and the round. Tell us where to send it.
         </p>
-        <!-- Formspree: replace YOUR_FORM_ID in the action with your real form ID
-             (formspree.io -> New form -> copy the endpoint). Until then the form shows a
-             "not connected yet" message instead of submitting. -->
-        <form class="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <!-- Formspree form endpoint (configured). To change it, swap the form ID in the action. -->
+        <form class="lead-form" action="https://formspree.io/f/mljbvovv" method="POST" novalidate>
           <div class="lead-form__row">
             <label>Name
               <input type="text" name="name" required autocomplete="name" placeholder="Jane Doe" />

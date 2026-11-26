@@ -1,8 +1,9 @@
 {
   "name": "DreamSleeve",
   "short_name": "DreamSleeve",
-  "description": "Synchronized dual-haptic embodiment — a wearable that gates pediatric procedural pain.",
-  "start_url": "/",
+  "description": "Synchronized dual-haptic embodiment: a wearable sleeve that gates needle distress across pediatric immunizations and adult self-injection.",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#05070E",
   "theme_color": "#05070E",

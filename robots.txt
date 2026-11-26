@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dreamsleeve.com/sitemap.xml
+Sitemap: https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/sitemap.xml

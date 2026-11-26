@@ -6,6 +6,21 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 22: Portability for a new host + live Formspree endpoint
+- **Wired the real Formspree endpoint** (`mljbvovv`) into the Ask-section form `action`; it now
+  submits for real (AJAX, stays on page).
+- **Made the site deploy-correct for a GitHub Pages project page** at
+  `https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/` (a subpath): confirmed all asset paths are
+  relative (CSS/JS/images/fonts/favicon/manifest), and repointed the only absolute URLs
+  (canonical, og:url, og:image, twitter:image, JSON-LD @id/url/logo/brand, `sitemap.xml`,
+  `robots.txt`) from the `dreamsleeve.com` placeholder to the project URL.
+- **Fixed `site.webmanifest`** for a subpath: `start_url`/`scope` → `./` (were `/`, which pointed
+  at the github.io root), and refreshed the description (dual-audience, no em dash).
+- Updated README deploy steps for the project-page URL and the custom-domain swap; noted the
+  form is live.
+- Verified via a simulated subpath serve: CSS/JS/images load with **zero 404s**, styles apply,
+  manifest + JSON-LD valid, 0 em dashes.
+
 ### 2026-11-26 — Step 21: Lead-capture form (Formspree)
 - Replaced the two `mailto:` buttons in the Ask section with an on-site **lead-capture form**
   (name, email, organization, interest dropdown, message), posting to **Formspree via AJAX** so

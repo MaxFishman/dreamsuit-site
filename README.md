@@ -36,31 +36,36 @@ drift + brightness pulse keeps the wireframe feeling "live"; both are disabled u
    ```
 2. Repo **Settings → Pages → Build and deployment → Source: Deploy from a branch**,
    branch `main` / root. `.nojekyll` is included so Pages serves files as-is.
-3. **Custom domain:** `CNAME` is set to `dreamsleeve.com`. In Settings → Pages, enter the
-   same domain and add these DNS records at your registrar:
-   - `A` records for the apex → GitHub Pages IPs (185.199.108–111.153)
-   - or a `CNAME` for `www` → `<you>.github.io`
-   Enable **Enforce HTTPS** once the cert provisions.
+   This repo publishes as a **project page** at
+   `https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/` (a subpath). Every asset path in the
+   site is **relative**, so CSS, JS, images, fonts, and the manifest all load correctly at that
+   subpath. The only absolute URLs (canonical, OG/Twitter image, JSON-LD, `sitemap.xml`,
+   `robots.txt`) already point at that project URL.
+3. **Custom domain (optional):** add it under Settings → Pages, commit a `CNAME` file containing
+   the domain, and change the absolute-URL host from `dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN`
+   to your domain in `index.html`, `sitemap.xml`, and `robots.txt`. DNS at your registrar:
+   `A` records for the apex → GitHub Pages IPs (185.199.108–111.153), or a `CNAME` for `www` →
+   `dreamsuit.github.io`. Enable **Enforce HTTPS** once the cert provisions.
 
 ## Before you publish — fill in the INFO NEEDED fields
 Search the repo for these and replace with real values:
-- **Domain** `dreamsleeve.com` → your domain, in: `index.html` (canonical, OG, Twitter,
-  JSON-LD), `CNAME`, `robots.txt`, `sitemap.xml`, `site.webmanifest`.
-- **Email** `invest@dreamsleeve.com` / `hello@dreamsleeve.com` in `index.html` (the two CTAs
-  and the contact line). Or point the primary CTA at a deck link / data-room URL.
+- **Host URL** — absolute URLs are set to the GitHub Pages project URL
+  `dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN`. Only change these if you move to a custom domain
+  (see Deploy step 3): `index.html` (canonical, OG, Twitter, JSON-LD), `sitemap.xml`, `robots.txt`.
+- **Email** `invest@dreamsleeve.com` in `index.html` (the fallback contact line under the form).
+  Swap for a real inbox.
 - **`INFO NEEDED` fields** — the **Team** section (founder/advisor names, roles, bios), the
   traction milestones, the leaderboard season score, and the deck-request email. Each is
   tagged with a magenta `INFO NEEDED` mark; search `index.html` for `INFO NEEDED` to find
   them all. (The `[titles illustrative]` and `[status: pre-submission]` tags are clarifiers,
   not missing data.) The Market stats are now real, sourced figures — see the `<i>` source
   tags (WHO / CDC 2025 / 2019 meta-analysis); swap in your own bottom-up TAM if preferred.
-- **Lead-capture form (Formspree)** — the Ask section has an on-site capture form. To turn it
-  on: create a form at [formspree.io](https://formspree.io), copy its endpoint, and replace
-  `YOUR_FORM_ID` in the `<form action="https://formspree.io/f/YOUR_FORM_ID">` in `index.html`.
-  Until then the form shows a "not connected yet" message instead of submitting. It posts via
-  AJAX (name, email, organization, interest, message) and shows an inline success/error state,
-  so the visitor never leaves the page. Swap the deck itself for a Docsend/Notion/data-room link
-  in the success flow or the confirmation email if you prefer.
+- **Lead-capture form (Formspree)** — wired to endpoint `mljbvovv` (the form `action` in
+  `index.html`). It posts via AJAX (name, email, organization, interest, message) and shows an
+  inline success/error state, so the visitor never leaves the page; submissions land in your
+  Formspree dashboard / notification email. To change the destination, swap the form ID in the
+  `action`. Point the deck itself at a Docsend/Notion/data-room link in the Formspree
+  auto-reply if you want instant delivery.
 
 ## Regenerating the social banner / icons
 The OG image and icons were rendered from HTML/SVG with headless Chrome. Source templates
