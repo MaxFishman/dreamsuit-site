@@ -225,39 +225,16 @@ mark {
 .pillar__name { font-size: var(--t-lg); font-weight: 600; margin: 16px 0 12px; }
 .pillar p { color: var(--muted); font-size: var(--t-sm); }
 
-/* ---------- mission sticky sequence ---------- */
-.mission { position: relative; height: 420vh; }
-.mission__sticky { position: sticky; top: 0; height: 100svh; display: grid; grid-template-columns: 340px 1fr;
-  align-items: center; gap: 48px; max-width: var(--maxw); margin-inline: auto; padding: 0 var(--gutter); }
-.mission__eyebrow { font-family: var(--mono); font-size: var(--t-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--signal); margin-bottom: 24px; }
-.mission__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
-.mission__list li { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 10px;
-  border: 1px solid transparent; color: var(--faint); transition: all .4s var(--ease); }
-.mission__list li.is-active { color: var(--text); border-color: var(--line); background: var(--panel); }
-.mission__num { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
-  border: 1px solid currentColor; font-family: var(--mono); font-size: .8rem; flex: none; }
-.mission__list li.is-active .mission__num { background: var(--signal); color: var(--void); border-color: var(--signal); box-shadow: 0 0 16px var(--signal); }
-.mission__label { font-family: var(--display); font-size: var(--t-base); font-weight: 500; letter-spacing: -.01em; }
-
-.mission__screen { position: relative; min-height: 340px; border: 1px solid var(--line); border-radius: 20px;
-  background: linear-gradient(180deg, var(--panel), var(--void-2)); overflow: hidden; }
-.mission__screen::before { content: ""; position: absolute; inset: 0; background:
-  linear-gradient(var(--grid) 1px, transparent 1px) 0 0/30px 30px,
-  linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0/30px 30px; opacity: .6; }
-.mission__panel { position: absolute; inset: 0; padding: 46px; display: flex; flex-direction: column; justify-content: center;
-  background: linear-gradient(180deg, var(--panel), var(--void-2)); z-index: 1;
-  opacity: 0; transition: opacity .14s linear; pointer-events: none; }
-/* active panel sits on top and fades in (delayed) over its own opaque bg,
-   after the outgoing panel has already cleared — no text-on-text overlap */
-.mission__panel.is-active { opacity: 1; z-index: 2; transition: opacity .4s var(--ease) .12s; }
-.mission__panel > * { opacity: 0; transform: translateY(14px); transition: opacity .45s var(--ease) .14s, transform .45s var(--ease) .14s; }
-.mission__panel.is-active > * { opacity: 1; transform: none; }
-.mission__badge { align-self: flex-start; font-family: var(--mono); font-size: .68rem; letter-spacing: .12em;
-  padding: 7px 13px; border-radius: 6px; color: var(--c); border: 1px solid var(--c); margin-bottom: 22px;
-  box-shadow: 0 0 20px -6px var(--c); }
-.mission__badge--win { background: var(--c); color: var(--void); }
-.mission__panel h3 { font-size: clamp(1.5rem, 3.4vw, 2.3rem); font-weight: 600; max-width: 18ch; }
-.mission__panel p { margin-top: 18px; color: var(--muted); font-size: var(--t-md); max-width: 46ch; }
+/* ---------- session stepper (within Science) ---------- */
+.session { margin-top: 52px; padding-top: 40px; border-top: 1px solid var(--line); }
+.session__eyebrow { font-family: var(--mono); font-size: var(--t-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--signal); margin-bottom: 22px; }
+.session__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: none; }
+.session__list li { display: flex; align-items: center; gap: 14px; padding: 18px; border-radius: 12px;
+  border: 1px solid var(--line); background: linear-gradient(180deg, var(--panel), var(--void-2)); }
+.session__num { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; flex: none;
+  font-family: var(--mono); font-size: .82rem; color: var(--signal); border: 1px solid var(--signal-dim);
+  box-shadow: inset 0 0 16px -8px var(--signal); }
+.session__label { font-family: var(--display); font-size: var(--t-base); font-weight: 500; letter-spacing: -.01em; color: var(--text); }
 
 /* ---------- market ---------- */
 .moat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 60px; }
@@ -421,17 +398,12 @@ mark {
   .pillars, .moat { grid-template-columns: 1fr; }
   .game__deck, .game-tiles, .loop__steps, .phases { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr 1fr; }
-  .mission { height: auto; }
-  .mission__sticky { position: static; height: auto; grid-template-columns: 1fr; gap: 28px; padding-block: 60px; }
-  .mission__screen { min-height: 0; }
-  .mission__panel { position: static; opacity: 1; transform: none; padding: 32px; }
-  .mission__panel > * { opacity: 1; transform: none; }
-  .mission__panel + .mission__panel { border-top: 1px solid var(--line); }
-  .mission__list li { cursor: default; }
+  .session__list { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 560px) {
   .header-cta { display: none; }
   .stats { grid-template-columns: 1fr; }
+  .session__list { grid-template-columns: 1fr; }
   .lead-form__row { grid-template-columns: 1fr; }
   .hero__title { font-size: clamp(2rem, 11vw, 3.2rem); }
 }
@@ -443,8 +415,4 @@ mark {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   [data-reveal] { opacity: 1; transform: none; }
   .scroll-cue span { animation: none; }
-  .mission { height: auto; }
-  .mission__sticky { position: static; height: auto; }
-  .mission__panel { position: static; opacity: 1; transform: none; }
-  .mission__panel > * { opacity: 1; transform: none; }
 }

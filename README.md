@@ -80,8 +80,6 @@ An on-site **Formspree** form (name, email, organization, interest, message) tha
 
 ![Ask / form](docs/screenshots/ask.png)
 
-> There is also a cinematic **Mission** section (a scroll-scrubbed, four-stage sticky sequence) between the Device and Game sections; it is animation-driven and best seen live.
-
 ---
 
 ## 🏗 Software architecture
@@ -108,7 +106,7 @@ No bundler, transpiler, package manager, or CI is required. **What is in the rep
 ├── styles/
 │   └── main.css            # design tokens, components, responsive, reduced-motion
 ├── scripts/
-│   └── main.js             # scroll reveals · count-ups · mission sequence · mobile nav · form AJAX
+│   └── main.js             # scroll reveals · count-ups · progress rail · mobile nav · scroll-spy · form AJAX
 ├── assets/
 │   ├── hero-arm.jpg        # hero photo (40 KB)
 │   ├── og-image.png        # 1200×630 social share card
@@ -130,7 +128,6 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 | **Scroll reveals** | `IntersectionObserver` adds `.is-in` to `[data-reveal]` elements once; reduced-motion shows them immediately |
 | **Count-up stats** | Animates `[data-count]` numbers when they enter the viewport (eased, reduced-motion sets the final value) |
 | **Progress rail** | The left-edge rail "charges" from cyan to magenta as you scroll |
-| **Mission sequence** | Scroll position drives the 4-stage sticky cinematic panels; static fallback on mobile/reduced-motion |
 | **Mobile nav** | Hamburger toggle (`aria-expanded`/`aria-controls`); opens a dropdown below 920px, closes on Escape / link tap / resize |
 | **Active-nav scroll-spy** | `IntersectionObserver` highlights the in-view section's nav link (`aria-current`) |
 | **Lead form** | Formspree AJAX submit with inline success/error, honeypot, required-field validation, graceful "not connected" state |
@@ -170,7 +167,7 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 ### Motion &amp; principles
 
 1. **Diegetic instrumentation** — the UI carries a HUD character: the progress rail charges, counters tick up, status pills read like live readouts.
-2. **One cinematic moment** — the sticky Mission sequence; everything else stays disciplined.
+2. **Restraint over spectacle** — scroll reveals and count-ups are subtle and one-shot; motion never competes with the copy.
 3. **Spend boldness once** — magenta is the rare charge colour; cyan is the workhorse.
 
 ---

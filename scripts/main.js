@@ -70,43 +70,6 @@
     counters.forEach(function (el) { cObs.observe(el); });
   }
 
-  /* ---------- mission sticky sequence ---------- */
-  var mission = document.getElementById("mission");
-  var stageItems = Array.prototype.slice.call(document.querySelectorAll(".mission__list li"));
-  var panels = Array.prototype.slice.call(document.querySelectorAll("[data-stage-panel]"));
-  var activeStage = -1;
-
-  function setStage(i) {
-    if (i === activeStage) return;
-    activeStage = i;
-    stageItems.forEach(function (li, idx) { li.classList.toggle("is-active", idx === i); });
-    panels.forEach(function (p, idx) { p.classList.toggle("is-active", idx === i); });
-  }
-
-  function onScrollMission() {
-    if (!mission || reduce) return;
-    var rect = mission.getBoundingClientRect();
-    var total = mission.offsetHeight - window.innerHeight;
-    if (total <= 0) return;
-    var progressed = Math.min(Math.max(-rect.top / total, 0), 0.9999);
-    setStage(Math.floor(progressed * panels.length));
-  }
-
-  /* On reduced motion / mobile static layout, show all panels + mark all active items */
-  function missionStaticFallback() {
-    var sticky = document.querySelector(".mission__sticky");
-    if (!sticky) return;
-    var staticLayout = window.getComputedStyle(sticky).position !== "sticky";
-    if (reduce || staticLayout) {
-      panels.forEach(function (p) { p.classList.add("is-active"); });
-      stageItems.forEach(function (li) { li.classList.add("is-active"); });
-    }
-  }
-
-  /* initialise first stage for desktop sticky */
-  if (!reduce) setStage(0);
-  missionStaticFallback();
-
   /* ---------- lead-capture form (Formspree AJAX) ---------- */
   var leadForm = document.querySelector(".lead-form");
   if (leadForm) {
@@ -187,11 +150,10 @@
     requestAnimationFrame(function () {
       onScrollHeader();
       onScrollRail();
-      onScrollMission();
       ticking = false;
     });
   }
   window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", function () { missionStaticFallback(); onScrollRail(); }, { passive: true });
+  window.addEventListener("resize", onScrollRail, { passive: true });
   onScroll();
 })();

@@ -6,6 +6,17 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 28: Fold the session steps into the Science slide
+- **Merged the "session, as the child plays it" 4-step list into the Science section** as a
+  static stepper (Fitting & Calibration → Antiseptic Prep & Shield Charge → Shield Strike &
+  Injection Window → Victory Cascade), so it reads on the same view as "Two signals. One
+  nervous system. No gap."
+- **Removed the standalone Mission section** — the full-height scroll-scrubbed sticky cinematic
+  (its 4 narrative phase panels, `#mission` footer link, the mission JS stage controller, and
+  all `.mission*` CSS incl. responsive/reduced-motion rules). Added a lightweight `.session`
+  stepper component in its place.
+- Updated the README (dropped the Mission note + JS-module row, reworded the motion principle).
+
 ### 2026-11-26 — Step 27: Remove the Device section
 - **Removed the entire Device section** — the "console that makes the invisible legible"
   intro, the engineering schematic (Fig. 01/02 + cross-section + circuit index), and the
