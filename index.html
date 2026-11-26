@@ -333,11 +333,70 @@
       </div>
 
       <div class="console" data-reveal>
-        <div class="console__stages" role="list" aria-label="Session stages">
-          <span class="stage-chip stage-chip--red" role="listitem">1 · Fitting &amp; Calibration</span>
-          <span class="stage-chip stage-chip--amber" role="listitem">2 · Antiseptic Prep &amp; Shield Charge</span>
-          <span class="stage-chip stage-chip--green" role="listitem">3 · Shield Strike &amp; Injection Window</span>
-          <span class="stage-chip stage-chip--flag" role="listitem">4 · Victory Cascade</span>
+        <div class="console__stages" role="tablist" aria-label="Chronosomatic injection synchronization pipeline" data-tabs>
+          <button class="stage-chip stage-chip--red" role="tab" id="pt-tab-0" aria-controls="pt-panel-0" aria-selected="true" style="--accent:var(--red)">1 · Arming &amp; Calibration</button>
+          <button class="stage-chip stage-chip--amber" role="tab" id="pt-tab-1" aria-controls="pt-panel-1" aria-selected="false" tabindex="-1" style="--accent:var(--amber)">2 · Antiseptic Prep &amp; Shield Charge</button>
+          <button class="stage-chip stage-chip--green" role="tab" id="pt-tab-2" aria-controls="pt-panel-2" aria-selected="false" tabindex="-1" style="--accent:var(--pass)">3 · Needle Insertion &amp; Shield Strike</button>
+          <button class="stage-chip stage-chip--flag" role="tab" id="pt-tab-3" aria-controls="pt-panel-3" aria-selected="false" tabindex="-1" style="--accent:var(--pass)">4 · Victory Cascade</button>
+        </div>
+
+        <div class="phase-panels">
+          <div class="phase-panel is-active" role="tabpanel" id="pt-panel-0" aria-labelledby="pt-tab-0" tabindex="0">
+            <div class="phase-panel__head">
+              <span class="phase-panel__time" style="--accent:var(--red)">T · 0:00–0:15</span>
+              <h3 class="phase-panel__title">Arming &amp; Calibration</h3>
+            </div>
+            <p>The ambient musical intro plays as the sleeve verifies impedance lock across Circuit 14
+              (Anterior Forearm) and Circuit 11 (Deltoid). A low-amplitude sine wave delivers gentle pre-warming.</p>
+            <dl class="phase-spec">
+              <div><dt>Signal</dt><dd>Tx:C Cumulus Drift · low-amplitude sine</dd></div>
+              <div><dt>Circuits</dt><dd>14 + 11</dd></div>
+              <div><dt>Action</dt><dd>Impedance lock · pre-warming</dd></div>
+            </dl>
+          </div>
+
+          <div class="phase-panel" role="tabpanel" id="pt-panel-1" aria-labelledby="pt-tab-1" tabindex="0">
+            <div class="phase-panel__head">
+              <span class="phase-panel__time" style="--accent:var(--amber)">T · 0:15–0:30</span>
+              <h3 class="phase-panel__title">Antiseptic Preparation &amp; Shield Charge</h3>
+            </div>
+            <p>As the MA or RN wipes the site with alcohol, musical tension builds via a rising synth
+              frequency. Surface piezoelectric nodes fire rapid-fire staccato bursts, mimicking crackling energy armor.</p>
+            <dl class="phase-spec">
+              <div><dt>Signal</dt><dd>Tx:S The Sandofal · piezo staccato</dd></div>
+              <div><dt>Audio</dt><dd>Rising synth frequency</dd></div>
+              <div><dt>Action</dt><dd>Shield charge across the site</dd></div>
+            </dl>
+          </div>
+
+          <div class="phase-panel" role="tabpanel" id="pt-panel-2" aria-labelledby="pt-tab-2" tabindex="0">
+            <div class="phase-panel__head">
+              <span class="phase-panel__time" style="--accent:var(--pass)">T · 0:30.000</span>
+              <h3 class="phase-panel__title">Needle Insertion &amp; Shield Strike</h3>
+            </div>
+            <p>At the musical drop, intramuscular needle entry coincides with a localized 500 ms, 100 Hz TENS
+              surge (36–50 mA) across Circuits 11 and 12, depolarizing Aβ nerve fibers and shutting the spinal pain gates.</p>
+            <dl class="phase-spec">
+              <div><dt>TENS surge</dt><dd>500 ms · 100 Hz · 36–50 mA</dd></div>
+              <div><dt>Circuits</dt><dd>11 + 12</dd></div>
+              <div><dt>Mechanism</dt><dd>Aβ depolarization · gate closure</dd></div>
+            </dl>
+          </div>
+
+          <div class="phase-panel" role="tabpanel" id="pt-panel-3" aria-labelledby="pt-tab-3" tabindex="0">
+            <div class="phase-panel__head">
+              <span class="phase-panel__time" style="--accent:var(--pass)">T · 0:32+</span>
+              <h3 class="phase-panel__title">Post-Procedure Victory Cascade</h3>
+            </div>
+            <p>Needle withdrawal triggers an ascending musical resolution, while the sleeve delivers a warm,
+              continuous cross-body sensory sweep, potentially triggering a dopamine-mediated frisson chill. The
+              user then plays the game, blasting the pathogen the vaccine protects against.</p>
+            <dl class="phase-spec">
+              <div><dt>Signal</dt><dd>Tx:H Hydro-Static Silk · cross-body sweep</dd></div>
+              <div><dt>Response</dt><dd>Dopamine-mediated frisson</dd></div>
+              <div><dt>Game</dt><dd>Blast the pathogen</dd></div>
+            </dl>
+          </div>
         </div>
 
         <div class="console__body">

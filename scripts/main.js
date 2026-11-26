@@ -107,6 +107,32 @@
   if (!reduce) setStage(0);
   missionStaticFallback();
 
+  /* ---------- pipeline tabs (Device console) ---------- */
+  Array.prototype.slice.call(document.querySelectorAll("[data-tabs]")).forEach(function (list) {
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.classList.toggle("is-active", on);
+      });
+      if (focus) tab.focus();
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () { select(tab); });
+      tab.addEventListener("keydown", function (e) {
+        var k = e.key, n = tabs.length, j = -1;
+        if (k === "ArrowRight" || k === "ArrowDown") j = (i + 1) % n;
+        else if (k === "ArrowLeft" || k === "ArrowUp") j = (i - 1 + n) % n;
+        else if (k === "Home") j = 0;
+        else if (k === "End") j = n - 1;
+        if (j > -1) { e.preventDefault(); select(tabs[j], true); }
+      });
+    });
+  });
+
   /* ---------- rAF-throttled scroll loop ---------- */
   var ticking = false;
   function onScroll() {

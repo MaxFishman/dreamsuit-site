@@ -6,6 +6,20 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 17: Device console stage chips become interactive tabs (injection pipeline)
+- Turned the Device console's four stage chips into an accessible **tabbed stepper** for the
+  **Chronosomatic Injection Synchronization Pipeline**: click (or arrow-key) a phase to reveal
+  its detail panel above the live telemetry.
+- Four phases from the client's copy, each with a timecode, description, and a Signal/Circuits/
+  Action spec grid: **1 Arming & Calibration** (0:00–0:15, Tx:C Cumulus Drift), **2 Antiseptic
+  Prep & Shield Charge** (0:15–0:30, Tx:S The Sandofal), **3 Needle Insertion & Shield Strike**
+  (0:30, 500 ms / 100 Hz / 36–50 mA TENS on Circuits 11+12, Aβ gate closure), **4 Victory
+  Cascade** (0:32+, Tx:H Hydro-Static Silk, dopamine frisson, then blast the pathogen).
+- Full ARIA tab pattern: `role="tablist/tab/tabpanel"`, `aria-selected`, roving `tabindex`,
+  Arrow/Home/End keys. Active chip lights its accent (red/amber/green/green) like the mock.
+- Vanilla JS (no deps); reduced-motion safe; verified: tabs switch correctly (CDP), 0
+  exceptions, JSON-LD valid, no em dashes reintroduced, no horizontal overflow at 360/390/1440.
+
 ### 2026-11-25 — Step 15: Hyper-realistic photographic hero (replaces the WebGL arm)
 - Swapped the procedural Three.js hero for a **photographic hero**: a real arm wearing the
   sleeve (black fabric + glowing cyan triangulated wireframe overlay), per the client's
