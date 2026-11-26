@@ -218,27 +218,6 @@ mark {
 [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 [data-reveal].is-in { opacity: 1; transform: none; }
 
-/* ---------- problem / single-modality trap ---------- */
-.trap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line);
-  border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
-.trap { background: var(--panel); padding: 34px 30px; position: relative; transition: background .3s; }
-.trap:hover { background: var(--panel-2); }
-.trap__icon { color: var(--signal); margin-bottom: 22px; filter: drop-shadow(0 0 10px rgba(47,228,228,.35)); }
-.trap__icon svg { stroke: currentColor; width: 46px; height: 46px; }
-.trap__name { font-size: var(--t-lg); font-weight: 600; margin-bottom: 18px; }
-.trap__tag, .trap__flaw { font-size: var(--t-sm); color: var(--muted); margin-top: 14px; line-height: 1.55; }
-.trap__tag span, .trap__flaw span { display: block; font-family: var(--mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
-.trap__flaw { color: #c3d2e0; }
-
-.verdict {
-  margin-top: 30px; padding: 26px 34px; text-align: center;
-  font-family: var(--display); font-size: clamp(1.1rem, 2.6vw, 1.7rem); font-weight: 500; color: var(--text);
-  border-radius: 16px; border: 1px solid transparent;
-  background: linear-gradient(var(--void), var(--void)) padding-box,
-    linear-gradient(90deg, var(--pulse), var(--signal)) border-box;
-  box-shadow: 0 0 60px -20px var(--pulse), inset 0 0 40px -30px var(--signal);
-}
-
 /* ---------- science pillars ---------- */
 .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .pillar { padding: 32px 28px; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, var(--panel), var(--void-2)); position: relative; }
@@ -541,7 +520,7 @@ mark {
   .hero__lede { margin-left: auto; margin-right: auto; }
   .hero__actions { justify-content: center; }
   .hero__photo { width: 128%; right: -34%; top: 42%; opacity: .4; }
-  .trap-grid, .pillars, .moat { grid-template-columns: 1fr; }
+  .pillars, .moat { grid-template-columns: 1fr; }
   .game__deck, .game-tiles, .loop__steps, .phases { grid-template-columns: 1fr; }
   .schematic-detail { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr 1fr; }

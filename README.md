@@ -55,11 +55,6 @@ The opening statement, over a photographic arm wearing the sleeve with a glowing
 
 ![Hero](docs/screenshots/hero.png)
 
-### The problem: escaping the single-modality trap
-Three competitor categories (buzzers, cognitive distractors, passive TENS), each solving one axis and failing the rest, closed by a neon "verdict" bar.
-
-![Problem](docs/screenshots/problem.png)
-
 ### The science
 Three pillars: **gate the pain** (Aβ-fibre recruitment + deltoid muscle-guarding relief), **render the texture** (layered piezo), and **bind them in time** (sub-5 ms visuo-haptic synchrony).
 
