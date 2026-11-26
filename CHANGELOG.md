@@ -6,6 +6,13 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 19: Placeholder markers relabeled "INFO NEEDED"
+- Replaced every on-site `[placeholder]` marker (and the one `[placeholder address]`) with
+  **INFO NEEDED** so the gaps are unmistakable before launch: the three market stats, four
+  traction milestones, the leaderboard season score, the deck-request email, and the footer
+  legal line. The `[titles illustrative]` and `[status: pre-submission]` clarifier tags are
+  left as-is. JSON-LD valid; tags balanced.
+
 ### 2026-11-26 — Step 18: Remove the hero telemetry strip
 - Removed the four-stat telemetry readout (TENS CURRENT / PIEZO VOLTAGE / SYNC LATENCY /
   ALIGNMENT LOCK) from the hero, decluttering the left column. The headline, lede, and CTAs remain.
