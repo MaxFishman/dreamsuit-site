@@ -6,6 +6,15 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 25: Mobile nav + analytics + remove Team section
+- **Mobile hamburger nav**: below 920px the primary nav no longer vanishes — it collapses into
+  an accessible dropdown behind an animated hamburger toggle (`aria-expanded`/`aria-controls`,
+  Escape to close, closes on link tap, resets on resize to desktop). Fixes a11y audit item I3.
+- **Privacy-friendly analytics**: optional **GoatCounter** snippet (no cookies, GDPR-friendly)
+  that loads only once a site code is filled in; until then nothing is requested or sent.
+- **Removed the Team section** entirely (markup, nav/footer links, CSS, README walkthrough +
+  `docs/screenshots/team.png`) — deferred for later.
+
 ### 2026-11-26 — Step 24: Quick wins — active-nav scroll-spy + branded 404
 - **Active-nav scroll-spy**: the header nav now highlights the section currently in view
   (cyan link + glow underline, `aria-current="true"`), driven by an `IntersectionObserver`

@@ -90,11 +90,6 @@ A three-stage on-ramp: ship now under **FDA General Wellness** → collect RCT e
 
 ![Pathway](docs/screenshots/pathway.png)
 
-### The team
-Founder / advisor cards and a clinical &amp; advisory block (fill in the `INFO NEEDED` fields).
-
-![Team](docs/screenshots/team.png)
-
 ### The ask: lead-capture form
 An on-site **Formspree** form (name, email, organization, interest, message) that submits via AJAX and shows inline success/error without leaving the page.
 
@@ -115,6 +110,7 @@ An on-site **Formspree** form (name, email, organization, interest, message) tha
 | Behaviour | **Vanilla JS** (`scripts/main.js`, ~180 lines) | No framework; `defer`-loaded; rAF-throttled; passive listeners |
 | Fonts | Google Fonts (Space Grotesk, Inter, IBM Plex Mono) | `display=swap`, preconnected |
 | Forms | Formspree (AJAX POST) | Lead capture with no backend |
+| Analytics | GoatCounter (optional) | Cookie-less, privacy-friendly; loads only when configured |
 | Hosting | GitHub Pages (static) | `.nojekyll`, relative paths |
 
 No bundler, transpiler, package manager, or CI is required. **What is in the repo is what ships.**
@@ -229,7 +225,8 @@ Hosted on **GitHub Pages** as a project page at **`https://dreamsuit.github.io/D
 Search the repo and fill these in:
 
 - **Lead-capture form (Formspree):** wired to endpoint `mljbvovv` (the `<form action>` in `index.html`). Submissions land in the Formspree dashboard / notification email. To change it, swap the form ID in the action.
-- **`INFO NEEDED` fields** (magenta tags in the UI; grep `index.html` for `INFO NEEDED`): the **Team** names/roles/bios, traction milestones, leaderboard season score, and the contact email. The Market stats are already real sourced figures (see the `<i>` source tags).
+- **Analytics (GoatCounter):** privacy-friendly, no cookies. Register a free site at [goatcounter.com](https://www.goatcounter.com/), then replace `YOUR_CODE` in the analytics snippet near the bottom of `index.html` with your subdomain. Until configured, nothing is loaded or sent.
+- **`INFO NEEDED` fields** (magenta tags in the UI; grep `index.html` for `INFO NEEDED`): traction milestones, leaderboard season score, and the contact email. The Market stats are already real sourced figures (see the `<i>` source tags).
 - **Email:** `invest@dreamsleeve.com` is a placeholder in the form's fallback line. Swap for a real inbox.
 - **Host URL:** only change if you move to a custom domain (see Deployment).
 

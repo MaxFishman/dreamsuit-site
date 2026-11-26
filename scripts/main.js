@@ -161,6 +161,31 @@
     });
   }
 
+  /* ---------- mobile nav toggle ---------- */
+  var navToggle = document.getElementById("navToggle");
+  var primaryNav = document.getElementById("primaryNav");
+  if (navToggle && primaryNav) {
+    var setNav = function (open) {
+      primaryNav.classList.toggle("is-open", open);
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+    navToggle.addEventListener("click", function () {
+      setNav(navToggle.getAttribute("aria-expanded") !== "true");
+    });
+    primaryNav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setNav(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navToggle.getAttribute("aria-expanded") === "true") {
+        setNav(false); navToggle.focus();
+      }
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 920) setNav(false);
+    }, { passive: true });
+  }
+
   /* ---------- active-nav scroll-spy ---------- */
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.site-nav a[href^="#"]'));
   if (navLinks.length && "IntersectionObserver" in window) {

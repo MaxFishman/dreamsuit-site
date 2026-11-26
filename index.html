@@ -92,7 +92,7 @@
       </span>
       <span class="brand__word">DreamSleeve</span>
     </a>
-    <nav class="site-nav" aria-label="Primary">
+    <nav class="site-nav" id="primaryNav" aria-label="Primary">
       <a href="#problem">Problem</a>
       <a href="#science">Science</a>
       <a href="#device">Device</a>
@@ -100,6 +100,9 @@
       <a href="#market">Market</a>
       <a href="#pathway">Pathway</a>
     </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+      <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
     <a class="btn btn--primary header-cta" href="#ask">Request the deck</a>
   </header>
 
@@ -719,46 +722,6 @@
       </ol>
     </section>
 
-    <!-- ==== TEAM ==== -->
-    <section class="section team" id="team">
-      <div class="section__head">
-        <h2 class="section__title" data-reveal>Who's building this</h2>
-        <p class="section__intro" data-reveal>
-          The people behind DreamSleeve, plus the clinical and regulatory advisors backing the work.
-          <mark>INFO NEEDED</mark>
-        </p>
-      </div>
-
-      <div class="team-grid">
-        <article class="member" data-reveal>
-          <div class="member__avatar" aria-hidden="true"></div>
-          <h3 class="member__name">Founder name <mark>INFO NEEDED</mark></h3>
-          <p class="member__role">Role / title <mark>INFO NEEDED</mark></p>
-          <p class="member__bio">One or two lines: prior company, relevant expertise, and why
-            this problem. <mark>INFO NEEDED</mark></p>
-        </article>
-        <article class="member" data-reveal>
-          <div class="member__avatar" aria-hidden="true"></div>
-          <h3 class="member__name">Co-founder name <mark>INFO NEEDED</mark></h3>
-          <p class="member__role">Role / title <mark>INFO NEEDED</mark></p>
-          <p class="member__bio">Background in haptics / neurostimulation / clinical engineering.
-            <mark>INFO NEEDED</mark></p>
-        </article>
-        <article class="member" data-reveal>
-          <div class="member__avatar" aria-hidden="true"></div>
-          <h3 class="member__name">Team member name <mark>INFO NEEDED</mark></h3>
-          <p class="member__role">Role / title <mark>INFO NEEDED</mark></p>
-          <p class="member__bio">Clinical, product, or go-to-market lead. <mark>INFO NEEDED</mark></p>
-        </article>
-      </div>
-
-      <div class="team-advisors" data-reveal>
-        <span class="team-advisors__cap">Clinical &amp; advisory</span>
-        <p>Advisory board, clinical site partners, and regulatory counsel supporting the General
-          Wellness launch and the Class II pathway. <mark>INFO NEEDED</mark></p>
-      </div>
-    </section>
-
     <!-- ==== ASK / CTA ==== -->
     <section class="section ask" id="ask">
       <div class="ask__card" data-reveal>
@@ -825,7 +788,6 @@
         <a href="#game">Game</a>
         <a href="#market">Market</a>
         <a href="#pathway">Pathway</a>
-        <a href="#team">Team</a>
         <a href="#ask">Investor deck</a>
       </nav>
     </div>
@@ -840,5 +802,20 @@
   </footer>
 
   <script src="scripts/main.js" defer></script>
+
+  <!-- Privacy-friendly analytics (GoatCounter): no cookies, no personal data, GDPR-friendly.
+       Setup: register a free site at https://www.goatcounter.com/ then replace YOUR_CODE
+       below with your subdomain code. Until configured, nothing is loaded or sent. -->
+  <script>
+    (function () {
+      var code = "YOUR_CODE"; /* <-- replace with your GoatCounter subdomain, e.g. "dreamsleeve" */
+      if (/YOUR_CODE|INFO[_ ]?NEEDED/i.test(code)) return;
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "//gc.zgo.at/count.js";
+      s.setAttribute("data-goatcounter", "https://" + code + ".goatcounter.com/count");
+      document.head.appendChild(s);
+    })();
+  </script>
 </body>
 </html>
