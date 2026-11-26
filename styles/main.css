@@ -150,31 +150,43 @@ mark {
 /* ---------- hero ---------- */
 .hero {
   min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
-  align-items: center; text-align: center; padding: 120px var(--gutter) 80px; position: relative;
+  align-items: flex-start; text-align: left; padding: 120px var(--gutter) 80px; position: relative;
+  overflow: hidden;
 }
-.hero__inner { max-width: 940px; width: 100%; min-width: 0; position: relative; z-index: 2; }
+.hero__inner { max-width: 640px; width: 100%; min-width: 0; position: relative; z-index: 2; }
 
-/* hero 3D scene canvas — sits behind the headline, gently masked at top/bottom */
-.hero__gl {
-  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; pointer-events: none;
-  -webkit-mask-image: linear-gradient(180deg, transparent 2%, #000 20%, #000 90%, transparent 100%);
-          mask-image: linear-gradient(180deg, transparent 2%, #000 20%, #000 90%, transparent 100%);
+/* hero photographic arm — anchored right, vignette-masked into the void */
+.hero__photo {
+  position: absolute; z-index: 0; pointer-events: none;
+  right: -2%; top: 50%; width: min(60%, 900px);
+  transform: translateY(-50%);
+  animation: heroDrift 16s ease-in-out infinite;
 }
+.hero__photo img {
+  display: block; width: 100%; height: auto;
+  -webkit-mask-image: radial-gradient(78% 92% at 57% 50%, #000 28%, rgba(0,0,0,.45) 58%, transparent 80%);
+          mask-image: radial-gradient(78% 92% at 57% 50%, #000 28%, rgba(0,0,0,.45) 58%, transparent 80%);
+  filter: saturate(1.06) contrast(1.03);
+  animation: heroPulse 5.5s ease-in-out infinite;
+}
+@keyframes heroDrift { 0%,100% { transform: translateY(-50%) scale(1); } 50% { transform: translateY(-50%) scale(1.03); } }
+@keyframes heroPulse { 0%,100% { filter: saturate(1.06) contrast(1.03) brightness(1); } 50% { filter: saturate(1.17) contrast(1.04) brightness(1.07); } }
+
 .hero__kicker {
   font-family: var(--mono); font-size: var(--t-sm); letter-spacing: .18em; text-transform: uppercase;
   color: var(--signal); margin-bottom: 26px;
 }
 .hero__title {
-  font-size: clamp(3rem, 11vw, 6.5rem); font-weight: 600; letter-spacing: -0.045em;
+  font-size: clamp(3rem, 9vw, 5.6rem); font-weight: 600; letter-spacing: -0.045em;
   background: linear-gradient(180deg, #fff 30%, #a9c4d6 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .hero__title em { color: var(--signal); -webkit-text-fill-color: var(--signal); background: none;
   text-shadow: 0 0 34px rgba(47,228,228,.4); }
 .hero__lede {
-  max-width: 58ch; margin: 30px auto 0; color: var(--muted); font-size: var(--t-md); text-wrap: balance;
+  max-width: 50ch; margin: 30px 0 0; color: var(--muted); font-size: var(--t-md); text-wrap: pretty;
 }
-.hero__actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 38px; }
+.hero__actions { display: flex; gap: 14px; justify-content: flex-start; flex-wrap: wrap; margin-top: 38px; }
 
 .telemetry-strip {
   margin-top: 54px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
@@ -455,6 +467,12 @@ mark {
    ============================================================ */
 @media (max-width: 920px) {
   .site-nav { display: none; }
+  /* hero: center the text, drop the arm to a faint ambient layer behind it */
+  .hero { align-items: center; text-align: center; }
+  .hero__inner { max-width: 680px; }
+  .hero__lede { margin-left: auto; margin-right: auto; }
+  .hero__actions { justify-content: center; }
+  .hero__photo { width: 128%; right: -34%; top: 42%; opacity: .4; }
   .trap-grid, .pillars, .moat { grid-template-columns: 1fr; }
   .game__deck, .game-tiles, .loop__steps, .phases { grid-template-columns: 1fr; }
   .schematic-detail { grid-template-columns: 1fr; }

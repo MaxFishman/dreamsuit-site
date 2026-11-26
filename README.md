@@ -8,25 +8,23 @@ Built to deploy on GitHub Pages with no build step.
 
 ## Structure
 ```
-index.html          # the whole page + SEO/OG/JSON-LD + import map
+index.html          # the whole page + SEO/OG/JSON-LD
 styles/main.css     # design system (neuro-tech HUD)
 scripts/main.js     # scroll experience + live telemetry (vanilla JS)
-scripts/hero3d.js   # 3D hero scene — Three.js (ES module, import-mapped to "three")
 assets/
+  hero-arm.jpg      # hero photo — arm wearing the sleeve with wireframe overlay
   schematic.png     # DreamSleeve engineering schematic (Device section)
-  vendor/three.module.js  # Three.js r169, vendored (no CDN, no build step)
 site.webmanifest    # PWA manifest
 sitemap.xml robots.txt CNAME .nojekyll
 PLAN.md CHANGELOG.md
 ```
 
-**3D hero:** `scripts/hero3d.js` renders the DreamSleeve neuro-signal scene — a translucent
-X-ray/schematic arm (shoulder → forearm → hand) wearing the sleeve, with circuits 11–14,
-TENS signal pulses, and electrode rings, in a Fresnel-rim "ghost" style — with Three.js. It's an ES module
-resolved through the `<script type="importmap">` in `index.html` that points `"three"` at the
-locally-vendored `assets/vendor/three.module.js` — so the site stays self-contained with no
-build step and no CDN runtime dependency. The scene respects `prefers-reduced-motion`, pauses
-off-screen, and degrades gracefully (the page still works if WebGL is unavailable).
+**Hero:** a photographic arm wearing the sleeve (black fabric + glowing cyan wireframe
+overlay), `assets/hero-arm.jpg`, anchored on the right and vignette-masked (CSS `mask-image`)
+so it dissolves into the void background behind the left-aligned headline. A subtle CSS
+drift + brightness pulse keeps the wireframe feeling "live"; both are disabled under
+`prefers-reduced-motion`. No JS, no dependencies, no build step. (An earlier WebGL/Three.js
+3D hero was replaced by this photographic treatment for a hyper-realistic look.)
 
 ## Deploy to GitHub Pages
 1. Create a repo and push these files to the default branch (root, not `/docs`).
