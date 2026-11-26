@@ -417,6 +417,30 @@ mark {
 .ask__actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 38px; }
 .ask__note { margin-top: 24px; color: var(--faint); font-size: var(--t-sm); }
 
+/* ---------- lead-capture form (Formspree) ---------- */
+.lead-form { margin: 34px auto 0; max-width: 560px; text-align: left; display: flex; flex-direction: column; gap: 16px; }
+.lead-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.lead-form label { display: flex; flex-direction: column; gap: 7px;
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.lead-form input, .lead-form select, .lead-form textarea {
+  font-family: var(--body); font-size: var(--t-base); color: var(--text); background: var(--void-2);
+  border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; width: 100%;
+  text-transform: none; letter-spacing: 0; -webkit-appearance: none; appearance: none;
+  transition: border-color .2s, box-shadow .2s; }
+.lead-form input::placeholder, .lead-form textarea::placeholder { color: var(--faint); }
+.lead-form input:focus, .lead-form select:focus, .lead-form textarea:focus {
+  outline: none; border-color: var(--signal); box-shadow: 0 0 0 3px rgba(47,228,228,.15); }
+.lead-form textarea { resize: vertical; min-height: 84px; }
+.lead-form select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+.lead-form__actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+.lead-form__actions .btn { cursor: pointer; }
+.lead-form__actions .btn[disabled] { opacity: .6; cursor: progress; }
+.lead-form__status { font-size: var(--t-sm); color: var(--muted); }
+.lead-form__status.is-ok { color: var(--pass); }
+.lead-form__status.is-error { color: var(--red); }
+
 /* ---------- footer ---------- */
 .site-footer { max-width: var(--maxw); margin-inline: auto; padding: 60px var(--gutter) 50px; border-top: 1px solid var(--line); }
 .site-footer__top { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
@@ -511,6 +535,7 @@ mark {
 @media (max-width: 560px) {
   .header-cta { display: none; }
   .stats { grid-template-columns: 1fr; }
+  .lead-form__row { grid-template-columns: 1fr; }
   .circuits { grid-template-columns: 1fr; }
   .console__stages { grid-template-columns: 1fr 1fr; }
   .phase-spec { grid-template-columns: 1fr; }

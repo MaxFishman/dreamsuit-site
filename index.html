@@ -765,12 +765,42 @@
           The deck covers the science, the clinical plan, the regulatory path, the team,
           and the round. Tell us where to send it.
         </p>
-        <div class="ask__actions">
-          <!-- Swap the mailto for your deck link / data-room when ready -->
-          <a class="btn btn--primary btn--lg" href="mailto:invest@dreamsleeve.com?subject=DreamSleeve%20investor%20deck%20request&amp;body=Hi%20DreamSleeve%20team%2C%20please%20send%20the%20investor%20deck.%20Fund%2Fname%3A%20">Request the investor deck</a>
-          <a class="btn btn--ghost btn--lg" href="mailto:hello@dreamsleeve.com?subject=DreamSleeve%20pilot%20enquiry">Talk about a clinical pilot</a>
-        </div>
-        <p class="ask__note">Prefer a call? Email <a href="mailto:invest@dreamsleeve.com">invest@dreamsleeve.com</a> <mark>INFO NEEDED</mark></p>
+        <!-- Formspree: replace YOUR_FORM_ID in the action with your real form ID
+             (formspree.io -> New form -> copy the endpoint). Until then the form shows a
+             "not connected yet" message instead of submitting. -->
+        <form class="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <div class="lead-form__row">
+            <label>Name
+              <input type="text" name="name" required autocomplete="name" placeholder="Jane Doe" />
+            </label>
+            <label>Email
+              <input type="email" name="email" required autocomplete="email" placeholder="jane@fund.com" />
+            </label>
+          </div>
+          <div class="lead-form__row">
+            <label>Organization / fund
+              <input type="text" name="organization" autocomplete="organization" placeholder="Optional" />
+            </label>
+            <label>I'm interested in
+              <select name="interest">
+                <option>Investor deck</option>
+                <option>Clinical pilot</option>
+                <option>Partnership</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
+          <label>Message
+            <textarea name="message" rows="3" placeholder="Optional. Anything you want us to know."></textarea>
+          </label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+          <input type="hidden" name="_subject" value="DreamSleeve: new deck / pilot request" />
+          <div class="lead-form__actions">
+            <button type="submit" class="btn btn--primary btn--lg">Request the deck</button>
+            <span class="lead-form__status" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+        <p class="ask__note">Prefer email? Write to <a href="mailto:invest@dreamsleeve.com">invest@dreamsleeve.com</a> <mark>INFO NEEDED</mark></p>
       </div>
     </section>
   </main>

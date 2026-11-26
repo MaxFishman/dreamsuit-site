@@ -54,8 +54,13 @@ Search the repo for these and replace with real values:
   them all. (The `[titles illustrative]` and `[status: pre-submission]` tags are clarifiers,
   not missing data.) The Market stats are now real, sourced figures — see the `<i>` source
   tags (WHO / CDC 2025 / 2019 meta-analysis); swap in your own bottom-up TAM if preferred.
-- **Deck delivery** — the primary CTA is a `mailto:`. Swap for Docsend/Notion/data-room
-  link, or wire a form service (Formspree etc.) if you want on-site capture.
+- **Lead-capture form (Formspree)** — the Ask section has an on-site capture form. To turn it
+  on: create a form at [formspree.io](https://formspree.io), copy its endpoint, and replace
+  `YOUR_FORM_ID` in the `<form action="https://formspree.io/f/YOUR_FORM_ID">` in `index.html`.
+  Until then the form shows a "not connected yet" message instead of submitting. It posts via
+  AJAX (name, email, organization, interest, message) and shows an inline success/error state,
+  so the visitor never leaves the page. Swap the deck itself for a Docsend/Notion/data-room link
+  in the success flow or the confirmation email if you prefer.
 
 ## Regenerating the social banner / icons
 The OG image and icons were rendered from HTML/SVG with headless Chrome. Source templates

@@ -6,6 +6,15 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 21: Lead-capture form (Formspree)
+- Replaced the two `mailto:` buttons in the Ask section with an on-site **lead-capture form**
+  (name, email, organization, interest dropdown, message), posting to **Formspree via AJAX** so
+  the visitor stays on the page and sees an inline success/error state.
+- Includes a honeypot (`_gotcha`) and `_subject`; client-side required-field validation; and a
+  graceful "not connected yet" message while the placeholder `YOUR_FORM_ID` endpoint is unset.
+- Swap `YOUR_FORM_ID` in the form `action` for a real Formspree endpoint to go live (README has
+  the step). Kept the email fallback. Still zero JS dependencies; no em dashes.
+
 ### 2026-11-26 — Step 20: Site improvements (stats, team, OG image, accessibility, perf)
 - **Market stats → real, sourced, dual-audience figures.** Replaced the placeholder stats with:
   16B injections given worldwide/yr (WHO); 1 in 10 US adults now use a GLP-1 (CDC, 2025); 1 in 4
