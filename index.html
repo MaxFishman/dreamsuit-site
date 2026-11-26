@@ -94,7 +94,6 @@
     </a>
     <nav class="site-nav" id="primaryNav" aria-label="Primary">
       <a href="#science">Science</a>
-      <a href="#device">Device</a>
       <a href="#game">Game</a>
       <a href="#market">Market</a>
       <a href="#pathway">Pathway</a>
@@ -124,7 +123,7 @@
         </p>
         <div class="hero__actions" data-reveal>
           <a class="btn btn--primary" href="#ask">Request the investor deck</a>
-          <a class="btn btn--ghost" href="#device">See the device<span class="btn__chev" aria-hidden="true">›</span></a>
+          <a class="btn btn--ghost" href="#science">See the science<span class="btn__chev" aria-hidden="true">›</span></a>
         </div>
       </div>
       <div class="scroll-cue" aria-hidden="true"><span></span>scroll</div>
@@ -162,243 +161,6 @@
           <p>A shared clock fires both channels in visuo-haptic synchrony. When sight, current,
             and texture agree within milliseconds, the brain commits to the illusion: embodiment.</p>
         </article>
-      </div>
-    </section>
-
-    <!-- ==== DEVICE / TELEMETRY HUD ==== -->
-    <section class="section device" id="device">
-      <div class="section__head">
-        <h2 class="section__title" data-reveal>The console that makes the invisible legible</h2>
-        <p class="section__intro" data-reveal>
-          Every circuit on the sleeve reports impedance, alignment, and lock state in real
-          time. Clinicians and self-injecting patients see exactly what the skin is receiving,
-          and a profile-matched current ceiling, pediatric or adult, keeps it safe by design.
-        </p>
-      </div>
-
-      <figure class="schematic" data-reveal>
-        <picture>
-          <source srcset="assets/schematic.webp" type="image/webp" />
-          <img src="assets/schematic.png" width="1600" height="855" loading="lazy" decoding="async"
-            alt="DreamSleeve wearable haptic sleeve engineering schematic: anterior and posterior arm views showing Circuit 11 (Biceps/Deltoid Gateway), Circuit 12 (Triceps brachii), Circuit 13 (Posterior Forearm Extensors) and Circuit 14 (Anterior Forearm Flexors) as triangular piezo actuator arrays, anatomical landmark pins, and a multi-layer ceramic piezoelectric actuator cross-section." />
-        </picture>
-      </figure>
-
-      <!-- editable vector detail: cross-section + circuit index -->
-      <div class="schematic-detail">
-        <figure class="xsection" data-reveal>
-          <span class="schematic__tag">Fig. 02 · Multi-layer ceramic piezoelectric actuator cross-section</span>
-          <svg class="xsection__svg" viewBox="0 0 560 280" role="img"
-               aria-label="Cross-section of a multi-layer ceramic piezoelectric actuator. From top: protective polymer coating, gold electrode top, active ceramic piezoelectric layer, gold electrode internal, active ceramic piezoelectric layer, gold electrode bottom, flexible substrate base. Stacking active layers multiplies bending displacement.">
-            <defs>
-              <linearGradient id="xs-gold" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#F3D777"/><stop offset="1" stop-color="#C79A2E"/>
-              </linearGradient>
-              <linearGradient id="xs-ceramic" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#EAF1F6"/><stop offset="1" stop-color="#BED0DC"/>
-              </linearGradient>
-              <marker id="xs-arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-                <path d="M1 1L7 4L1 7Z" fill="#2FE4E4"/>
-              </marker>
-            </defs>
-
-            <g font-family="IBM Plex Mono, monospace" font-size="11">
-              <!-- 7 layers: x=14 w=176, pitch 26 (h18/gap8) -->
-              <g>
-                <rect x="14" y="8"   width="176" height="18" rx="2" fill="#CFE0EC" fill-opacity=".55" stroke="#2a3a52"/>
-                <rect x="14" y="34"  width="176" height="18" rx="2" fill="url(#xs-gold)"/>
-                <rect x="14" y="60"  width="176" height="18" rx="2" fill="url(#xs-ceramic)"/>
-                <rect x="14" y="86"  width="176" height="18" rx="2" fill="url(#xs-gold)"/>
-                <rect x="14" y="112" width="176" height="18" rx="2" fill="url(#xs-ceramic)"/>
-                <rect x="14" y="138" width="176" height="18" rx="2" fill="url(#xs-gold)"/>
-                <rect x="14" y="164" width="176" height="18" rx="2" fill="#16324a" stroke="#2FE4E4" stroke-opacity=".5"/>
-              </g>
-              <!-- leader ticks + labels -->
-              <g fill="#8DA2B8" stroke="#2a3a52">
-                <line x1="190" y1="17"  x2="204" y2="17"/>
-                <line x1="190" y1="43"  x2="204" y2="43"/>
-                <line x1="190" y1="69"  x2="204" y2="69"/>
-                <line x1="190" y1="95"  x2="204" y2="95"/>
-                <line x1="190" y1="121" x2="204" y2="121"/>
-                <line x1="190" y1="147" x2="204" y2="147"/>
-                <line x1="190" y1="173" x2="204" y2="173"/>
-              </g>
-              <g fill="#B9C8D6" stroke="none">
-                <text x="210" y="21">Protective polymer coating</text>
-                <text x="210" y="47">Gold electrode · top</text>
-                <text x="210" y="73">Ceramic piezoelectric · active</text>
-                <text x="210" y="99">Gold electrode · internal</text>
-                <text x="210" y="125">Ceramic piezoelectric · active</text>
-                <text x="210" y="151">Gold electrode · bottom</text>
-                <text x="210" y="177">Flexible substrate base</text>
-              </g>
-              <!-- bending displacement cue -->
-              <path d="M14 4 Q102 -10 190 4" fill="none" stroke="#2FE4E4" stroke-opacity=".7" stroke-dasharray="3 3"/>
-              <line x1="102" y1="8" x2="102" y2="-8" stroke="#2FE4E4" marker-end="url(#xs-arrow)"/>
-              <text x="210" y="243" fill="#2FE4E4" font-size="9" letter-spacing="1.5">BENDING DISPLACEMENT &#8593;  (stacked active layers)</text>
-            </g>
-          </svg>
-          <figcaption>A sub-millimeter stack: layering active ceramic piezo elements multiplies
-            bending displacement at low drive voltage. The mechanism behind the texture channel.</figcaption>
-        </figure>
-
-        <div class="circuit-index" data-reveal>
-          <span class="schematic__tag">Circuit index · four actuator arrays</span>
-          <table>
-            <thead><tr><th>Circuit</th><th>Muscle group</th><th>View</th></tr></thead>
-            <tbody>
-              <tr style="--c:var(--signal)"><td><span class="ci__dot"></span>11</td><td>Biceps / Deltoid Gateway</td><td>Anterior</td></tr>
-              <tr style="--c:var(--amber)"><td><span class="ci__dot"></span>12</td><td>Triceps brachii</td><td>Posterior</td></tr>
-              <tr style="--c:var(--signal)"><td><span class="ci__dot"></span>13</td><td>Posterior Forearm Extensors</td><td>Posterior</td></tr>
-              <tr style="--c:var(--signal)"><td><span class="ci__dot"></span>14</td><td>Anterior Forearm Flexors</td><td>Anterior</td></tr>
-            </tbody>
-          </table>
-          <p class="circuit-index__note">Each array is a triangle of piezo actuators on the
-            transparent fabric substrate, placed over its muscle group and anchored to the
-            anatomical landmarks pinned above.</p>
-        </div>
-      </div>
-
-      <div class="console" data-reveal>
-        <div class="console__stages" role="tablist" aria-label="Chronosomatic injection synchronization pipeline" data-tabs>
-          <button class="stage-chip stage-chip--red" role="tab" id="pt-tab-0" aria-controls="pt-panel-0" aria-selected="true" style="--accent:var(--red)">1 · Arming &amp; Calibration</button>
-          <button class="stage-chip stage-chip--amber" role="tab" id="pt-tab-1" aria-controls="pt-panel-1" aria-selected="false" tabindex="-1" style="--accent:var(--amber)">2 · Antiseptic Prep &amp; Shield Charge</button>
-          <button class="stage-chip stage-chip--green" role="tab" id="pt-tab-2" aria-controls="pt-panel-2" aria-selected="false" tabindex="-1" style="--accent:var(--pass)">3 · Needle Insertion &amp; Shield Strike</button>
-          <button class="stage-chip stage-chip--flag" role="tab" id="pt-tab-3" aria-controls="pt-panel-3" aria-selected="false" tabindex="-1" style="--accent:var(--pass)">4 · Victory Cascade</button>
-        </div>
-
-        <div class="phase-panels">
-          <div class="phase-panel is-active" role="tabpanel" id="pt-panel-0" aria-labelledby="pt-tab-0" tabindex="0">
-            <div class="phase-panel__head">
-              <span class="phase-panel__time" style="--accent:var(--red)">T · 0:00–0:15</span>
-              <h3 class="phase-panel__title">Arming &amp; Calibration</h3>
-            </div>
-            <p>The ambient musical intro plays as the sleeve verifies impedance lock across Circuit 14
-              (Anterior Forearm) and Circuit 11 (Deltoid). A low-amplitude sine wave delivers gentle pre-warming.</p>
-            <dl class="phase-spec">
-              <div><dt>Signal</dt><dd>Tx:C Cumulus Drift · low-amplitude sine</dd></div>
-              <div><dt>Circuits</dt><dd>14 + 11</dd></div>
-              <div><dt>Action</dt><dd>Impedance lock · pre-warming</dd></div>
-            </dl>
-          </div>
-
-          <div class="phase-panel" role="tabpanel" id="pt-panel-1" aria-labelledby="pt-tab-1" tabindex="0">
-            <div class="phase-panel__head">
-              <span class="phase-panel__time" style="--accent:var(--amber)">T · 0:15–0:30</span>
-              <h3 class="phase-panel__title">Antiseptic Preparation &amp; Shield Charge</h3>
-            </div>
-            <p>As the MA or RN wipes the site with alcohol, musical tension builds via a rising synth
-              frequency. Surface piezoelectric nodes fire rapid-fire staccato bursts, mimicking crackling energy armor.</p>
-            <dl class="phase-spec">
-              <div><dt>Signal</dt><dd>Tx:S The Sandofal · piezo staccato</dd></div>
-              <div><dt>Audio</dt><dd>Rising synth frequency</dd></div>
-              <div><dt>Action</dt><dd>Shield charge across the site</dd></div>
-            </dl>
-          </div>
-
-          <div class="phase-panel" role="tabpanel" id="pt-panel-2" aria-labelledby="pt-tab-2" tabindex="0">
-            <div class="phase-panel__head">
-              <span class="phase-panel__time" style="--accent:var(--pass)">T · 0:30.000</span>
-              <h3 class="phase-panel__title">Needle Insertion &amp; Shield Strike</h3>
-            </div>
-            <p>At the musical drop, intramuscular needle entry coincides with a localized 500 ms, 100 Hz TENS
-              surge (36–50 mA) across Circuits 11 and 12, depolarizing Aβ nerve fibers and shutting the spinal pain gates.</p>
-            <dl class="phase-spec">
-              <div><dt>TENS surge</dt><dd>500 ms · 100 Hz · 36–50 mA</dd></div>
-              <div><dt>Circuits</dt><dd>11 + 12</dd></div>
-              <div><dt>Mechanism</dt><dd>Aβ depolarization · gate closure</dd></div>
-            </dl>
-          </div>
-
-          <div class="phase-panel" role="tabpanel" id="pt-panel-3" aria-labelledby="pt-tab-3" tabindex="0">
-            <div class="phase-panel__head">
-              <span class="phase-panel__time" style="--accent:var(--pass)">T · 0:32+</span>
-              <h3 class="phase-panel__title">Post-Procedure Victory Cascade</h3>
-            </div>
-            <p>Needle withdrawal triggers an ascending musical resolution, while the sleeve delivers a warm,
-              continuous cross-body sensory sweep, potentially triggering a dopamine-mediated frisson chill. The
-              user then plays the game, blasting the pathogen the vaccine protects against.</p>
-            <dl class="phase-spec">
-              <div><dt>Signal</dt><dd>Tx:H Hydro-Static Silk · cross-body sweep</dd></div>
-              <div><dt>Response</dt><dd>Dopamine-mediated frisson</dd></div>
-              <div><dt>Game</dt><dd>Blast the pathogen</dd></div>
-            </dl>
-          </div>
-        </div>
-
-        <div class="console__body">
-          <div class="console__grid">
-            <h3 class="console__heading">Real-time telemetry &amp; alignment status</h3>
-            <div class="circuits">
-              <article class="circuit" data-circuit>
-                <header><b>Circuit 11</b><span>Deltoid / Biceps Gateway</span></header>
-                <dl>
-                  <div><dt>Z_IMPEDANCE</dt><dd>810 Ω <i class="pass">Pass</i></dd></div>
-                  <div><dt>ALIGNMENT LOCK</dt><dd class="pass">ENGAGED</dd></div>
-                </dl>
-                <span class="circuit__lock" aria-hidden="true">🔒</span>
-              </article>
-              <article class="circuit" data-circuit>
-                <header><b>Circuit 12</b><span>Triceps Brachii</span></header>
-                <dl>
-                  <div><dt>Z_IMPEDANCE</dt><dd>940 Ω <i class="pass">Pass</i></dd></div>
-                  <div><dt>ALIGNMENT LOCK</dt><dd class="pass">ENGAGED</dd></div>
-                </dl>
-                <span class="circuit__lock" aria-hidden="true">🔒</span>
-              </article>
-              <article class="circuit" data-circuit>
-                <header><b>Circuit 13</b><span>Posterior Forearm Extensors</span></header>
-                <dl>
-                  <div><dt>Z_IMPEDANCE</dt><dd>620 Ω <i class="pass">Pass</i></dd></div>
-                  <div><dt>ALIGNMENT LOCK</dt><dd class="pass">ENGAGED</dd></div>
-                </dl>
-                <span class="circuit__lock" aria-hidden="true">🔒</span>
-              </article>
-              <article class="circuit" data-circuit>
-                <header><b>Circuit 14</b><span>Anterior Forearm Flexors</span></header>
-                <dl>
-                  <div><dt>Z_IMPEDANCE</dt><dd>715 Ω <i class="pass">Pass</i></dd></div>
-                  <div><dt>ALIGNMENT LOCK</dt><dd class="pass">ENGAGED</dd></div>
-                </dl>
-                <span class="circuit__lock" aria-hidden="true">🔒</span>
-              </article>
-            </div>
-          </div>
-
-          <aside class="console__panel">
-            <div class="meter">
-              <div class="meter__col">
-                <span class="meter__cap">TENS CURRENT</span>
-                <span class="meter__range">0–60 mA</span>
-                <div class="meter__track"><span class="meter__fill" style="--lvl:58%"></span></div>
-                <span class="meter__read">Level 2 · <i>Therapeutic Pre-Warming</i></span>
-              </div>
-              <div class="meter__col">
-                <span class="meter__cap">PIEZO VOLTAGE</span>
-                <span class="meter__range">0–100 V P-P</span>
-                <div class="meter__track"><span class="meter__fill meter__fill--pulse" style="--lvl:85%"></span></div>
-                <span class="meter__read">85 V P-P · <i>Texture rendering</i></span>
-              </div>
-            </div>
-
-            <div class="safety">
-              <div class="safety__row">
-                <div>
-                  <b>Master somatic limiter</b>
-                  <span>Profile ceiling · PED 40 mA / ADULT 60 mA</span>
-                </div>
-                <span class="pill pill--on">ACTIVE</span>
-              </div>
-              <div class="safety__row">
-                <div>
-                  <b>TMO emergency stop</b>
-                  <span>Voice control · detecting phoneme <i>"TMO"</i></span>
-                </div>
-                <span class="pill pill--ready">READY</span>
-              </div>
-            </div>
-          </aside>
-        </div>
       </div>
     </section>
 
@@ -721,7 +483,6 @@
       </div>
       <nav class="site-footer__nav" aria-label="Footer">
         <a href="#science">Science</a>
-        <a href="#device">Device</a>
         <a href="#mission">Mission</a>
         <a href="#game">Game</a>
         <a href="#market">Market</a>

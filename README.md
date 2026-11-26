@@ -39,10 +39,10 @@
 
 DreamSleeve is a dual-action wearable sleeve: **TENS** neurostimulation engages the spinal Gate Control Theory of pain while **high-frequency piezoelectric** actuators render tactile texture, in synchrony, turning a passive injection into an active, embodied experience. This site is the **investor- and customer-facing** story for the product.
 
-- **One page, no framework, no build step.** Hand-authored HTML, one CSS design system, and ~180 lines of vanilla JavaScript.
+- **One page, no framework, no build step.** Hand-authored HTML, one CSS design system, and ~195 lines of vanilla JavaScript.
 - **Zero runtime dependencies** bundled in the repo. The only third parties are Google Fonts (CSS) and Formspree (the contact form POST endpoint).
 - **Deploys anywhere static.** Every asset path is relative, so it runs correctly from a domain root *or* a GitHub Pages project sub-path.
-- **Accessible and fast.** WCAG 2.1 AA colour contrast, a correct ARIA tab widget, `prefers-reduced-motion` support, lazy-loaded WebP imagery.
+- **Accessible and fast.** WCAG 2.1 AA colour contrast, a keyboard-accessible mobile nav, `prefers-reduced-motion` support, lazy-loaded imagery.
 
 The neuro-tech "HUD" aesthetic (deep-space navy, cyan signal, magenta charge, pass-green states, diegetic monospace readouts) runs through every section.
 
@@ -59,16 +59,6 @@ The opening statement, over a photographic arm wearing the sleeve with a glowing
 Three pillars: **gate the pain** (Aβ-fibre recruitment + deltoid muscle-guarding relief), **render the texture** (layered piezo), and **bind them in time** (sub-5 ms visuo-haptic synchrony).
 
 ![Science](docs/screenshots/science.png)
-
-### The device: engineering schematic
-The anterior/posterior schematic (Circuits 11–14 on the fabric substrate), with an editable inline-SVG cross-section of the multi-layer piezo actuator and a circuit index table.
-
-![Device schematic](docs/screenshots/device-schematic.png)
-
-### The device: live console + interactive pipeline tabs
-The four stage chips are an **accessible tabbed stepper** for the Chronosomatic Injection Synchronization Pipeline. Click (or arrow-key) a phase to reveal its timecode, description, and Signal / Circuits / Action spec grid, above a live telemetry console (impedance, meters, profile-matched safety limiter).
-
-![Device console with tabs](docs/screenshots/device-console.png)
 
 ### The game: play the pathogen
 A diegetic **Game Selector** that auto-scales the narrative and haptic texture by developmental age cohort, pathogen game tiles (Flu-Zilla, Corona Crusher), and a practice → compete → leaderboard flywheel.
@@ -100,9 +90,9 @@ An on-site **Formspree** form (name, email, organization, interest, message) tha
 
 | Layer | Choice | Why |
 |---|---|---|
-| Markup | Hand-authored **HTML5** (`index.html`, ~844 lines) | One document, full SEO/OG/Twitter/JSON-LD, semantic landmarks |
-| Styles | One **CSS** file (`styles/main.css`, ~557 lines) | Custom-property design system, component classes, responsive, reduced-motion |
-| Behaviour | **Vanilla JS** (`scripts/main.js`, ~180 lines) | No framework; `defer`-loaded; rAF-throttled; passive listeners |
+| Markup | Hand-authored **HTML5** (`index.html`, ~520 lines) | One document, full SEO/OG/Twitter/JSON-LD, semantic landmarks |
+| Styles | One **CSS** file (`styles/main.css`, ~450 lines) | Custom-property design system, component classes, responsive, reduced-motion |
+| Behaviour | **Vanilla JS** (`scripts/main.js`, ~195 lines) | No framework; `defer`-loaded; rAF-throttled; passive listeners |
 | Fonts | Google Fonts (Space Grotesk, Inter, IBM Plex Mono) | `display=swap`, preconnected |
 | Forms | Formspree (AJAX POST) | Lead capture with no backend |
 | Analytics | GoatCounter (optional) | Cookie-less, privacy-friendly; loads only when configured |
@@ -118,11 +108,9 @@ No bundler, transpiler, package manager, or CI is required. **What is in the rep
 ├── styles/
 │   └── main.css            # design tokens, components, responsive, reduced-motion
 ├── scripts/
-│   └── main.js             # scroll reveals · count-ups · mission sequence · tabs · form AJAX
+│   └── main.js             # scroll reveals · count-ups · mission sequence · mobile nav · form AJAX
 ├── assets/
 │   ├── hero-arm.jpg        # hero photo (40 KB)
-│   ├── schematic.webp      # device schematic (72 KB, served)   ┐ <picture>
-│   ├── schematic.png       # schematic PNG fallback (1.6 MB)    ┘
 │   ├── og-image.png        # 1200×630 social share card
 │   ├── favicon.svg · favicon-32.png · apple-touch-icon.png
 ├── docs/
@@ -143,7 +131,8 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 | **Count-up stats** | Animates `[data-count]` numbers when they enter the viewport (eased, reduced-motion sets the final value) |
 | **Progress rail** | The left-edge rail "charges" from cyan to magenta as you scroll |
 | **Mission sequence** | Scroll position drives the 4-stage sticky cinematic panels; static fallback on mobile/reduced-motion |
-| **Pipeline tabs** | Full ARIA tabs controller for the Device console: `aria-selected`, roving `tabindex`, Arrow/Home/End keys |
+| **Mobile nav** | Hamburger toggle (`aria-expanded`/`aria-controls`); opens a dropdown below 920px, closes on Escape / link tap / resize |
+| **Active-nav scroll-spy** | `IntersectionObserver` highlights the in-view section's nav link (`aria-current`) |
 | **Lead form** | Formspree AJAX submit with inline success/error, honeypot, required-field validation, graceful "not connected" state |
 
 ### CSS architecture (`styles/main.css`)
@@ -163,7 +152,7 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 | Token | Hex | Role | |
 |---|---|---|---|
 | `--void` | `#05070E` | Page canvas, deep-space navy | ![](https://img.shields.io/badge/%20-05070E?style=flat-square&labelColor=05070E) |
-| `--panel` | `#0B1220` | Raised telemetry surfaces | ![](https://img.shields.io/badge/%20-0B1220?style=flat-square&labelColor=0B1220) |
+| `--panel` | `#0B1220` | Raised panel surfaces | ![](https://img.shields.io/badge/%20-0B1220?style=flat-square&labelColor=0B1220) |
 | `--signal` | `#2FE4E4` | **Cyan** — primary accent, live data, links | ![](https://img.shields.io/badge/%20-2FE4E4?style=flat-square&labelColor=2FE4E4) |
 | `--pulse` | `#FF3DD8` | **Magenta** — rare "charge" emphasis | ![](https://img.shields.io/badge/%20-FF3DD8?style=flat-square&labelColor=FF3DD8) |
 | `--pass` | `#38E88A` | **Green** — validated / engaged states | ![](https://img.shields.io/badge/%20-38E88A?style=flat-square&labelColor=38E88A) |
@@ -176,11 +165,11 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 
 - **Space Grotesk** — display/headlines (geometric technical grotesk; tight tracking).
 - **Inter** — body copy (≤70ch line length, sentence case).
-- **IBM Plex Mono** — diegetic telemetry only (impedance values, circuit IDs, status words).
+- **IBM Plex Mono** — diegetic instrument labels only (status words, timecodes, counters).
 
 ### Motion &amp; principles
 
-1. **Diegetic instrumentation** — the UI behaves like the device's own console: data looks real, locks engage, bars charge.
+1. **Diegetic instrumentation** — the UI carries a HUD character: the progress rail charges, counters tick up, status pills read like live readouts.
 2. **One cinematic moment** — the sticky Mission sequence; everything else stays disciplined.
 3. **Spend boldness once** — magenta is the rare charge colour; cyan is the workhorse.
 
@@ -235,9 +224,9 @@ Targets **WCAG 2.1 AA**. Verified:
 
 - **Contrast:** all text colours pass AA on their backgrounds (the small-label `--faint` was tuned to `#7587a0` for this).
 - **Semantics:** one `<h1>`, correct heading order, `<header>/<nav>/<main>/<footer>` landmarks, a working skip link to `#top`.
-- **Tabs widget:** correct ARIA pattern (`role="tablist/tab/tabpanel"`, `aria-selected`, roving `tabindex`, Arrow/Home/End keys, visible focus ring).
+- **Mobile nav:** hamburger toggle with `aria-expanded`/`aria-controls`, Escape to close, roving focus, visible focus ring.
 - **Motion:** `prefers-reduced-motion` neutralises every animation; the WebGL-free design has no seizure/vestibular risk surface.
-- **Images:** decorative images use empty `alt` + `aria-hidden`; the schematic has descriptive `alt`.
+- **Images:** decorative images use empty `alt` + `aria-hidden`.
 - Zoom is allowed (no `maximum-scale`), `lang="en"` is set, link text is descriptive.
 
 ---
@@ -245,7 +234,7 @@ Targets **WCAG 2.1 AA**. Verified:
 ## ⚡ Performance
 
 - **No framework, no runtime dependencies.** `scripts/main.js` is ~8 KB of vanilla JS, `defer`-loaded, with a single rAF-throttled scroll loop and passive listeners.
-- **Imagery is light:** hero photo 40 KB; the device schematic ships as **WebP (72 KB)** via `<picture>` with a PNG fallback, a ~96% saving over the 1.6 MB PNG.
+- **Imagery is light:** the hero photo is 40 KB and lazy-decoded; no other raster assets ship on the page.
 - **No layout shift:** every content image has explicit `width`/`height`; below-the-fold images are `loading="lazy"`.
 - Fonts preconnect and use `display=swap`.
 
