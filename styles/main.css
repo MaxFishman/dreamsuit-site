@@ -141,6 +141,11 @@ mark {
 .site-nav { display: flex; gap: 26px; margin-left: auto; }
 .site-nav a { color: var(--muted); font-size: var(--t-sm); font-weight: 500; transition: color .2s; }
 .site-nav a:hover { color: var(--text); }
+.site-nav a.is-active { color: var(--signal); }
+.site-nav a.is-active::after {
+  content: ""; display: block; height: 1px; margin-top: 3px;
+  background: var(--signal); box-shadow: 0 0 6px var(--signal);
+}
 .header-cta { margin-left: 8px; }
 
 /* ---------- layout primitives ---------- */

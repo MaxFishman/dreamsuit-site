@@ -6,6 +6,13 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 24: Quick wins — active-nav scroll-spy + branded 404
+- **Active-nav scroll-spy**: the header nav now highlights the section currently in view
+  (cyan link + glow underline, `aria-current="true"`), driven by an `IntersectionObserver`
+  with a mid-viewport activation band in `scripts/main.js`. No new dependencies.
+- **Branded 404 page** (`404.html`): a self-contained, on-brand "signal lost" page GitHub
+  Pages serves for unknown paths; inline styles, links back to the site root (`./`).
+
 ### 2026-11-26 — Step 23: Professional branded README
 - Rewrote `README.md` as a detailed, brand-styled document: a rendered banner, brand-colour
   badges, a full **site walkthrough with a screenshot per section**, **software architecture**

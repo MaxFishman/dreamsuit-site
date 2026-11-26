@@ -161,6 +161,25 @@
     });
   }
 
+  /* ---------- active-nav scroll-spy ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.site-nav a[href^="#"]'));
+  if (navLinks.length && "IntersectionObserver" in window) {
+    var linkFor = {}, spyTargets = [];
+    navLinks.forEach(function (a) {
+      var el = document.getElementById(a.getAttribute("href").slice(1));
+      if (el) { linkFor[el.id] = a; spyTargets.push(el); }
+    });
+    var spyObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        navLinks.forEach(function (a) { a.classList.remove("is-active"); a.removeAttribute("aria-current"); });
+        var a = linkFor[e.target.id];
+        if (a) { a.classList.add("is-active"); a.setAttribute("aria-current", "true"); }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    spyTargets.forEach(function (el) { spyObs.observe(el); });
+  }
+
   /* ---------- rAF-throttled scroll loop ---------- */
   var ticking = false;
   function onScroll() {
