@@ -6,6 +6,15 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 23: Professional branded README
+- Rewrote `README.md` as a detailed, brand-styled document: a rendered banner, brand-colour
+  badges, a full **site walkthrough with a screenshot per section**, **software architecture**
+  (stack, file tree, JS modules, CSS architecture), the **design system** (colour tokens with
+  swatches, type roles, motion principles), setup/local-dev, deployment (project-page sub-path),
+  configuration, accessibility, and performance.
+- Added `docs/banner-template.html` (banner source) and `docs/screenshots/*.png` (11 images:
+  banner, hero, and every section) rendered from the live sections with headless Chrome.
+
 ### 2026-11-26 — Step 22: Portability for a new host + live Formspree endpoint
 - **Wired the real Formspree endpoint** (`mljbvovv`) into the Ask-section form `action`; it now
   submits for real (AJAX, stays on page).

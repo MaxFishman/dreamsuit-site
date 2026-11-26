@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { width: 1280px; height: 400px; overflow: hidden; background: #05070E; color: #EAF2F8;
+    font-family: "Space Grotesk", system-ui, sans-serif; position: relative; }
+  .grid { position: absolute; inset: 0;
+    background:
+      linear-gradient(rgba(90,130,170,.08) 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(90deg, rgba(90,130,170,.08) 1px, transparent 1px) 0 0 / 40px 40px,
+      radial-gradient(900px 480px at 82% -20%, rgba(47,228,228,.16), transparent 60%),
+      radial-gradient(640px 460px at -6% 120%, rgba(255,61,216,.10), transparent 55%);
+    -webkit-mask-image: radial-gradient(130% 120% at 38% 10%, #000 58%, transparent 100%); }
+  .arm { position: absolute; right: -40px; top: 50%; transform: translateY(-50%); width: 560px; height: auto;
+    -webkit-mask-image: radial-gradient(74% 92% at 60% 50%, #000 24%, rgba(0,0,0,.4) 58%, transparent 82%);
+    filter: saturate(1.05) contrast(1.03); }
+  .rail { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(#2FE4E4, #FF3DD8); box-shadow: 0 0 16px #2FE4E4; }
+  .wrap { position: absolute; inset: 0; padding: 54px 64px; display: flex; flex-direction: column; justify-content: space-between; z-index: 2; }
+  .brand { display: inline-flex; align-items: center; gap: 13px; font-weight: 700; font-size: 30px; letter-spacing: -.03em; }
+  .brand svg { stroke: #2FE4E4; filter: drop-shadow(0 0 7px rgba(47,228,228,.6)); }
+  .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 14px; letter-spacing: .22em; text-transform: uppercase; color: #2FE4E4; margin-bottom: 16px; }
+  h1 { font-size: 60px; font-weight: 600; line-height: .98; letter-spacing: -.035em;
+    background: linear-gradient(180deg, #fff 34%, #a9c4d6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  h1 em { font-style: normal; color: #2FE4E4; -webkit-text-fill-color: #2FE4E4; text-shadow: 0 0 34px rgba(47,228,228,.45); }
+  .chips { display: flex; gap: 10px; margin-top: 22px; }
+  .chip { font-family: "IBM Plex Mono", monospace; font-size: 13px; letter-spacing: .06em; color: #8DA2B8;
+    border: 1px solid #1a2740; border-radius: 100px; padding: 7px 14px; background: rgba(11,18,32,.5); }
+  .chip b { color: #EAF2F8; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="rail"></div>
+  <img class="arm" src="../assets/hero-arm.jpg" alt="" />
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke-width="1.6">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3" />
+      </svg>
+      DreamSleeve
+    </div>
+    <div>
+      <div class="eyebrow">Investor &amp; customer site · static · zero dependencies</div>
+      <h1>Synchronized dual-haptic <em>embodiment.</em></h1>
+      <div class="chips">
+        <span class="chip"><b>HTML</b> + CSS + vanilla JS</span>
+        <span class="chip">No build step</span>
+        <span class="chip">GitHub Pages</span>
+        <span class="chip">WCAG AA</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
