@@ -6,6 +6,17 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-25 — Step 16: Em-dash cleanup (avoid-ai-writing audit)
+- Audited the site copy with the installed **avoid-ai-writing** skill's deterministic detector:
+  scored **Clean / HUMAN_ONLY** with Tier 1/2/3 vocabulary all zero. The single finding was
+  **em-dash density** (~38 in ~1,500 words vs a ~1-per-1,000 target).
+- Edit-mode pass: converted every prose em dash to a comma, colon, period, or parentheses
+  (meaning preserved, punctuation only). Broke two "isn't X — it's Y" frames into clean
+  sentences ("The memory that consolidates isn't fear. It's a level cleared."; "DreamSleeve
+  doesn't distract from the needle. It rewrites what the needle is."). Titles/OG/Twitter use a
+  colon; parenthetical asides use (). Re-ran the detector: **0 issues** remaining.
+- JSON-LD still valid; section/div/p/figure/article tags balanced.
+
 ### 2026-11-25 — Step 14: Realistic X-ray arm for the 3D hero
 - Rebuilt the hero sleeve as a **realistic, anatomical X-ray / engineering-schematic arm**
   in the style of the DreamSleeve schematic: a variable-radius swept tube along a natural
