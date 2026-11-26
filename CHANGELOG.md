@@ -6,6 +6,24 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 20: Site improvements (stats, team, OG image, accessibility, perf)
+- **Market stats → real, sourced, dual-audience figures.** Replaced the placeholder stats with:
+  16B injections given worldwide/yr (WHO); 1 in 10 US adults now use a GLP-1 (CDC, 2025); 1 in 4
+  young adults fear needles (2019 meta-analysis); plus the 4 ms sync budget. Each carries an
+  inline source tag. (No reliable public "needle-anxiety device" market figure exists, so TAM is
+  left for a bottom-up build.)
+- **New Team section (`#team`)** — "Who's building this": founder/advisor cards scaffolded with
+  `INFO NEEDED` for names, roles, bios, plus a clinical & advisory block. Linked in the footer nav.
+- **Fresh social share image** — regenerated `assets/og-image.png` (1200×630) to match the current
+  photographic hero (was the old telemetry-console render); updated OG/Twitter image alt text.
+- **Accessibility (from an audit):** bumped `--faint` #5c6f88 → #7587a0 so small text (legal
+  disclaimer, telemetry labels) passes WCAG AA; decorative lock emoji now `aria-hidden`; skip link
+  targets `#top`; added a visually-hidden `<h2>` for the Mission section (+ an `.sr-only` utility).
+- **Performance:** converted the 1.59 MB schematic PNG to **WebP (70 KB, −96%)** served via
+  `<picture>` with a PNG fallback.
+- Verified: JSON-LD valid, tags balanced, 0 em dashes, no horizontal overflow at 390/1440,
+  browser loads the WebP, count-ups reach their targets.
+
 ### 2026-11-26 — Step 19: Placeholder markers relabeled "INFO NEEDED"
 - Replaced every on-site `[placeholder]` marker (and the one `[placeholder address]`) with
   **INFO NEEDED** so the gaps are unmistakable before launch: the three market stats, four

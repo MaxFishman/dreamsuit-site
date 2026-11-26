@@ -48,10 +48,12 @@ Search the repo for these and replace with real values:
   JSON-LD), `CNAME`, `robots.txt`, `sitemap.xml`, `site.webmanifest`.
 - **Email** `invest@dreamsleeve.com` / `hello@dreamsleeve.com` in `index.html` (the two CTAs
   and the contact line). Or point the primary CTA at a deck link / data-room URL.
-- **`INFO NEEDED` figures** — market size, needle-fear %, traction milestones, leaderboard
-  score, deck-request email. Each is tagged with a magenta `INFO NEEDED` mark in the UI;
-  search `index.html` for `INFO NEEDED` to find them all. (The `[titles illustrative]` and
-  `[status: pre-submission]` tags are clarifiers, not missing data.)
+- **`INFO NEEDED` fields** — the **Team** section (founder/advisor names, roles, bios), the
+  traction milestones, the leaderboard season score, and the deck-request email. Each is
+  tagged with a magenta `INFO NEEDED` mark; search `index.html` for `INFO NEEDED` to find
+  them all. (The `[titles illustrative]` and `[status: pre-submission]` tags are clarifiers,
+  not missing data.) The Market stats are now real, sourced figures — see the `<i>` source
+  tags (WHO / CDC 2025 / 2019 meta-analysis); swap in your own bottom-up TAM if preferred.
 - **Deck delivery** — the primary CTA is a `mailto:`. Swap for Docsend/Notion/data-room
   link, or wire a form service (Formspree etc.) if you want on-site capture.
 

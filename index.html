@@ -24,14 +24,14 @@
   <meta property="og:image" content="https://dreamsleeve.com/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="DreamSleeve: a telemetry console reading ALIGNMENT LOCK ENGAGED across four haptic circuits, over the words Synchronized Dual-Haptic Embodiment." />
+  <meta property="og:image:alt" content="DreamSleeve: a glowing cyan wireframe sleeve on an arm, beside the words Synchronized dual-haptic embodiment." />
 
   <!-- ==== TWITTER ==== -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="DreamSleeve: Synchronized Dual-Haptic Embodiment" />
   <meta name="twitter:description" content="An arm-worn sleeve that fuses TENS + piezo into one signal to gate needle distress, for kids' vaccines and adult GLP-1 / insulin self-injections alike." />
   <meta name="twitter:image" content="https://dreamsleeve.com/assets/og-image.png" />
-  <meta name="twitter:image:alt" content="DreamSleeve dual-haptic telemetry console." />
+  <meta name="twitter:image:alt" content="DreamSleeve: a glowing wireframe sleeve on an arm, dual-haptic neurostimulation." />
 
   <!-- ==== ICONS / MANIFEST ==== -->
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -73,7 +73,7 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#problem">Skip to content</a>
+  <a class="skip-link" href="#top">Skip to content</a>
 
   <!-- Engineering grid + scroll progress rail -->
   <div class="grid-canvas" aria-hidden="true"></div>
@@ -227,8 +227,11 @@
       </div>
 
       <figure class="schematic" data-reveal>
-        <img src="assets/schematic.png" width="1600" height="855" loading="lazy" decoding="async"
-          alt="DreamSleeve wearable haptic sleeve engineering schematic: anterior and posterior arm views showing Circuit 11 (Biceps/Deltoid Gateway), Circuit 12 (Triceps brachii), Circuit 13 (Posterior Forearm Extensors) and Circuit 14 (Anterior Forearm Flexors) as triangular piezo actuator arrays, anatomical landmark pins, and a multi-layer ceramic piezoelectric actuator cross-section." />
+        <picture>
+          <source srcset="assets/schematic.webp" type="image/webp" />
+          <img src="assets/schematic.png" width="1600" height="855" loading="lazy" decoding="async"
+            alt="DreamSleeve wearable haptic sleeve engineering schematic: anterior and posterior arm views showing Circuit 11 (Biceps/Deltoid Gateway), Circuit 12 (Triceps brachii), Circuit 13 (Posterior Forearm Extensors) and Circuit 14 (Anterior Forearm Flexors) as triangular piezo actuator arrays, anatomical landmark pins, and a multi-layer ceramic piezoelectric actuator cross-section." />
+        </picture>
         <figcaption>
           <span class="schematic__tag">Fig. 01 · Anterior / posterior engineering schematic</span>
           Four circuits on a transparent ergonomic fabric substrate, mapped to anatomical
@@ -389,7 +392,7 @@
                   <div><dt>Z_IMPEDANCE</dt><dd>810 Ω <i class="pass">Pass</i></dd></div>
                   <div><dt>ALIGNMENT LOCK</dt><dd class="pass">ENGAGED</dd></div>
                 </dl>
-                <span class="circuit__lock" aria-label="Lock engaged">🔒</span>
+                <span class="circuit__lock" aria-hidden="true">🔒</span>
               </article>
               <article class="circuit" data-circuit>
                 <header><b>Circuit 12</b><span>Triceps Brachii</span></header>
@@ -397,7 +400,7 @@
                   <div><dt>Z_IMPEDANCE</dt><dd>940 Ω <i class="pass">Pass</i></dd></div>
                   <div><dt>ALIGNMENT LOCK</dt><dd class="pass">ENGAGED</dd></div>
                 </dl>
-                <span class="circuit__lock" aria-label="Lock engaged">🔒</span>
+                <span class="circuit__lock" aria-hidden="true">🔒</span>
               </article>
               <article class="circuit" data-circuit>
                 <header><b>Circuit 13</b><span>Posterior Forearm Extensors</span></header>
@@ -405,7 +408,7 @@
                   <div><dt>Z_IMPEDANCE</dt><dd>620 Ω <i class="pass">Pass</i></dd></div>
                   <div><dt>ALIGNMENT LOCK</dt><dd class="pass">ENGAGED</dd></div>
                 </dl>
-                <span class="circuit__lock" aria-label="Lock engaged">🔒</span>
+                <span class="circuit__lock" aria-hidden="true">🔒</span>
               </article>
               <article class="circuit" data-circuit>
                 <header><b>Circuit 14</b><span>Anterior Forearm Flexors</span></header>
@@ -413,7 +416,7 @@
                   <div><dt>Z_IMPEDANCE</dt><dd>715 Ω <i class="pass">Pass</i></dd></div>
                   <div><dt>ALIGNMENT LOCK</dt><dd class="pass">ENGAGED</dd></div>
                 </dl>
-                <span class="circuit__lock" aria-label="Lock engaged">🔒</span>
+                <span class="circuit__lock" aria-hidden="true">🔒</span>
               </article>
             </div>
           </div>
@@ -457,6 +460,7 @@
 
     <!-- ==== MISSION (sticky cinematic sequence) ==== -->
     <section class="mission" id="mission" aria-label="The DreamSleeve mission flow">
+      <h2 class="sr-only">The DreamSleeve mission flow</h2>
       <div class="mission__sticky">
         <div class="mission__stageboard">
           <p class="mission__eyebrow">The session, as the child plays it</p>
@@ -620,16 +624,16 @@
 
       <div class="stats" data-reveal>
         <div class="stat">
-          <span class="stat__num" data-count="2.0" data-suffix="B+">0</span>
-          <span class="stat__label">Pediatric needle procedures / yr <mark>INFO NEEDED</mark></span>
+          <span class="stat__num" data-count="16" data-suffix="B">0</span>
+          <span class="stat__label">Injections given worldwide / yr <i>WHO</i></span>
         </div>
         <div class="stat">
-          <span class="stat__num" data-count="63" data-suffix="%">0</span>
-          <span class="stat__label">Of children report needle fear <mark>INFO NEEDED</mark></span>
+          <span class="stat__num">1 in 10</span>
+          <span class="stat__label">US adults now use a GLP-1 <i>CDC, 2025</i></span>
         </div>
         <div class="stat">
-          <span class="stat__num" data-count="4" data-prefix="$" data-suffix="B">0</span>
-          <span class="stat__label">Serviceable market <mark>INFO NEEDED</mark></span>
+          <span class="stat__num">1 in 4</span>
+          <span class="stat__label">Young adults fear needles <i>meta-analysis, 2019</i></span>
         </div>
         <div class="stat">
           <span class="stat__num" data-count="4" data-suffix=" ms">0</span>
@@ -713,6 +717,46 @@
       </ol>
     </section>
 
+    <!-- ==== TEAM ==== -->
+    <section class="section team" id="team">
+      <div class="section__head">
+        <h2 class="section__title" data-reveal>Who's building this</h2>
+        <p class="section__intro" data-reveal>
+          The people behind DreamSleeve, plus the clinical and regulatory advisors backing the work.
+          <mark>INFO NEEDED</mark>
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <article class="member" data-reveal>
+          <div class="member__avatar" aria-hidden="true"></div>
+          <h3 class="member__name">Founder name <mark>INFO NEEDED</mark></h3>
+          <p class="member__role">Role / title <mark>INFO NEEDED</mark></p>
+          <p class="member__bio">One or two lines: prior company, relevant expertise, and why
+            this problem. <mark>INFO NEEDED</mark></p>
+        </article>
+        <article class="member" data-reveal>
+          <div class="member__avatar" aria-hidden="true"></div>
+          <h3 class="member__name">Co-founder name <mark>INFO NEEDED</mark></h3>
+          <p class="member__role">Role / title <mark>INFO NEEDED</mark></p>
+          <p class="member__bio">Background in haptics / neurostimulation / clinical engineering.
+            <mark>INFO NEEDED</mark></p>
+        </article>
+        <article class="member" data-reveal>
+          <div class="member__avatar" aria-hidden="true"></div>
+          <h3 class="member__name">Team member name <mark>INFO NEEDED</mark></h3>
+          <p class="member__role">Role / title <mark>INFO NEEDED</mark></p>
+          <p class="member__bio">Clinical, product, or go-to-market lead. <mark>INFO NEEDED</mark></p>
+        </article>
+      </div>
+
+      <div class="team-advisors" data-reveal>
+        <span class="team-advisors__cap">Clinical &amp; advisory</span>
+        <p>Advisory board, clinical site partners, and regulatory counsel supporting the General
+          Wellness launch and the Class II pathway. <mark>INFO NEEDED</mark></p>
+      </div>
+    </section>
+
     <!-- ==== ASK / CTA ==== -->
     <section class="section ask" id="ask">
       <div class="ask__card" data-reveal>
@@ -751,6 +795,7 @@
         <a href="#game">Game</a>
         <a href="#market">Market</a>
         <a href="#pathway">Pathway</a>
+        <a href="#team">Team</a>
         <a href="#ask">Investor deck</a>
       </nav>
     </div>
