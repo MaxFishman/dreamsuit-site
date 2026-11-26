@@ -42,14 +42,16 @@ drift + brightness pulse keeps the wireframe feeling "live"; both are disabled u
    - or a `CNAME` for `www` → `<you>.github.io`
    Enable **Enforce HTTPS** once the cert provisions.
 
-## Before you publish — swap the placeholders
+## Before you publish — fill in the INFO NEEDED fields
 Search the repo for these and replace with real values:
 - **Domain** `dreamsleeve.com` → your domain, in: `index.html` (canonical, OG, Twitter,
   JSON-LD), `CNAME`, `robots.txt`, `sitemap.xml`, `site.webmanifest`.
 - **Email** `invest@dreamsleeve.com` / `hello@dreamsleeve.com` in `index.html` (the two CTAs
   and the contact line). Or point the primary CTA at a deck link / data-room URL.
-- **`[placeholder]` figures** — market size, needle-fear %, traction milestones, team.
-  They are visibly tagged in the UI and in `index.html`.
+- **`INFO NEEDED` figures** — market size, needle-fear %, traction milestones, leaderboard
+  score, deck-request email. Each is tagged with a magenta `INFO NEEDED` mark in the UI;
+  search `index.html` for `INFO NEEDED` to find them all. (The `[titles illustrative]` and
+  `[status: pre-submission]` tags are clarifiers, not missing data.)
 - **Deck delivery** — the primary CTA is a `mailto:`. Swap for Docsend/Notion/data-room
   link, or wire a form service (Formspree etc.) if you want on-site capture.
 
