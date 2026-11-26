@@ -6,6 +6,12 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 18: Remove the hero telemetry strip
+- Removed the four-stat telemetry readout (TENS CURRENT / PIEZO VOLTAGE / SYNC LATENCY /
+  ALIGNMENT LOCK) from the hero, decluttering the left column. The headline, lede, and CTAs remain.
+- Deleted the now-dead CSS (`.telemetry-strip`, `.tstat*`, `.live-dot*`, `@keyframes blink`,
+  and the two mobile overrides). JSON-LD valid; tags balanced.
+
 ### 2026-11-26 — Step 17: Device console stage chips become interactive tabs (injection pipeline)
 - Turned the Device console's four stage chips into an accessible **tabbed stepper** for the
   **Chronosomatic Injection Synchronization Pipeline**: click (or arrow-key) a phase to reveal

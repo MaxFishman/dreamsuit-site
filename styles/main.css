@@ -188,31 +188,11 @@ mark {
 }
 .hero__actions { display: flex; gap: 14px; justify-content: flex-start; flex-wrap: wrap; margin-top: 38px; }
 
-.telemetry-strip {
-  margin-top: 54px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-  background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
-}
-.tstat { background: var(--panel); padding: 18px 20px; text-align: left; }
-.tstat__label { display: block; font-family: var(--mono); font-size: .66rem; letter-spacing: .14em; color: var(--faint); }
-.tstat__value { display: block; margin-top: 8px; font-family: var(--mono); font-size: var(--t-md); color: var(--text); font-weight: 500; }
-.tstat__value--pass { color: var(--pass); text-shadow: 0 0 16px rgba(56,232,138,.4); }
-.tstat--ok { position: relative; }
-
 .scroll-cue { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
   font-family: var(--mono); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--faint);
   display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .scroll-cue span { width: 1px; height: 34px; background: linear-gradient(var(--signal), transparent); animation: cue 1.8s var(--ease) infinite; }
 @keyframes cue { 0%,100%{opacity:.3; transform:scaleY(.6);} 50%{opacity:1; transform:scaleY(1);} }
-
-/* ---------- hero: live telemetry dot (ALIGNMENT LOCK readout) ---------- */
-.live-dot {
-  width: 8px; height: 8px; border-radius: 50%; flex: none; background: var(--signal);
-  box-shadow: 0 0 10px var(--signal); animation: blink 1.6s steps(1, end) infinite;
-}
-.live-dot--pass { background: var(--pass); box-shadow: 0 0 10px var(--pass); }
-@keyframes blink { 0%, 62% { opacity: 1; } 63%, 100% { opacity: .22; } }
-
-.tstat__value--pass { display: inline-flex; align-items: center; gap: 8px; }
 
 /* ---------- reveal animation ---------- */
 [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -501,7 +481,6 @@ mark {
   .schematic-detail { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr 1fr; }
   .console__body { grid-template-columns: 1fr; }
-  .telemetry-strip { grid-template-columns: 1fr 1fr; }
   .mission { height: auto; }
   .mission__sticky { position: static; height: auto; grid-template-columns: 1fr; gap: 28px; padding-block: 60px; }
   .mission__screen { min-height: 0; }
@@ -512,7 +491,7 @@ mark {
 }
 @media (max-width: 560px) {
   .header-cta { display: none; }
-  .stats, .telemetry-strip { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; }
   .circuits { grid-template-columns: 1fr; }
   .console__stages { grid-template-columns: 1fr 1fr; }
   .phase-spec { grid-template-columns: 1fr; }
