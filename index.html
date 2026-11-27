@@ -7,7 +7,7 @@
   <!-- ==== PRIMARY META ==== -->
   <title>DreamSleeve: Synchronized Dual-Haptic Embodiment for Needle Distress</title>
   <meta name="description" content="DreamSleeve is an arm-worn sleeve that fuses TENS neurostimulation and piezo-haptic texture into one synchronized signal that mitigates needle distress, procedural anxiety, and muscle guarding across pediatric immunizations and adult self-injections (GLP-1 regimens, Type 1 Diabetes insulin)." />
-  <meta name="keywords" content="DreamSleeve, dual-haptic, needle distress, procedural pain, pediatric immunization, adult self-injection, GLP-1, insulin, type 1 diabetes, vaccine anxiety, gamified immunization, TENS, piezo haptics, neurostimulation, pain gating, medical wearable, needle anxiety, FDA general wellness, EPSDT, HSA HRA" />
+  <meta name="keywords" content="DreamSleeve, dual-haptic, needle distress, procedural pain, pediatric immunization, adult self-injection, GLP-1, insulin, type 1 diabetes, vaccine anxiety, gamified immunization, TENS, piezo haptics, neurostimulation, pain gating, medical wearable, needle anxiety, FDA general wellness" />
   <meta name="author" content="DreamSleeve" />
   <meta name="theme-color" content="#05070E" />
   <meta name="color-scheme" content="dark" />
@@ -59,15 +59,32 @@
         "name": "DreamSleeve",
         "url": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/",
         "logo": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/assets/favicon-32.png",
+        "slogan": "Synchronized dual-haptic embodiment",
         "description": "DreamSleeve builds synchronized dual-haptic wearables that gate needle distress across the lifespan, from pediatric immunizations to adult self-injection."
       },
       {
+        "@type": "WebSite",
+        "@id": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/#website",
+        "name": "DreamSleeve",
+        "url": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/#org" },
+        "about": { "@id": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/#product" }
+      },
+      {
         "@type": "Product",
+        "@id": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/#product",
         "name": "DreamSleeve",
         "brand": { "@id": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/#org" },
+        "url": "https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/",
         "category": "Medical wearable / procedural pain management",
         "description": "An arm-worn sleeve that fuses TENS neurostimulation and piezo-haptic texture into one synchronized signal to mitigate needle distress, procedural anxiety, and muscle guarding across pediatric immunizations and adult self-injections including GLP-1 regimens and Type 1 Diabetes insulin. Pediatric sessions are gamified: children defeat the pathogen their vaccine protects against. Positioned as an FDA General Wellness product.",
-        "audience": { "@type": "MedicalAudience", "audienceType": "Pediatric clinicians, caregivers, and families; adults self-injecting GLP-1 or insulin" }
+        "audience": { "@type": "MedicalAudience", "audienceType": "Pediatric clinicians, caregivers, and families; adults self-injecting GLP-1 or insulin" },
+        "additionalProperty": [
+          { "@type": "PropertyValue", "name": "Channels", "value": "TENS neurostimulation + piezoelectric haptic texture" },
+          { "@type": "PropertyValue", "name": "Synchrony budget", "value": "~4 ms visuo-haptic" },
+          { "@type": "PropertyValue", "name": "Regulatory positioning", "value": "FDA General Wellness" }
+        ]
       }
     ]
   }

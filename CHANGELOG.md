@@ -6,6 +6,17 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 35: SEO + GEO pass
+- **Sitemap** refreshed (`lastmod` → current).
+- **`llms.txt`** added — a factual, source-cited summary of DreamSleeve for AI answer engines
+  (ChatGPT, Perplexity, Claude) to read and cite accurately (GEO).
+- **`robots.txt`** now explicitly welcomes AI crawlers (GPTBot, ClaudeBot, PerplexityBot,
+  Google-Extended, Applebot-Extended, CCBot, …) alongside `User-agent: *`.
+- **Structured data** expanded: added a `WebSite` entity and a `@id`-linked `Product` with
+  `additionalProperty` (channels, ~4 ms synchrony, FDA General Wellness) and an Organization
+  `slogan`. Graph now Organization + WebSite + Product.
+- Trimmed stale `EPSDT, HSA HRA` from the keywords meta (those sections were removed).
+
 ### 2026-11-26 — Step 34: Brand loading splash
 - Added a full-screen **loading splash** shown on homepage load: the brand's radiant-node mark
   (pulsing cyan core, rotating rays, a spinning loader arc), the **DreamSleeve** wordmark, a

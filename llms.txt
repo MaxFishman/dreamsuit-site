@@ -1,0 +1,36 @@
+# DreamSleeve
+
+> DreamSleeve is an arm-worn wearable sleeve that fuses TENS neurostimulation and piezoelectric haptic texture into one synchronized signal to reduce needle distress, procedural anxiety, and muscle guarding — across pediatric immunizations and adult self-injections (GLP-1 regimens and Type 1 Diabetes insulin).
+
+DreamSleeve runs two physiologic channels in lockstep under a sub-5-millisecond synchrony budget, turning a passive injection into an active, embodied experience the nervous system can't distinguish from reality. The company calls this "synchronized dual-haptic embodiment." It is positioned as an FDA General Wellness product.
+
+## How it works
+
+- **Gate the pain** — a tuned TENS field recruits large-diameter sensory fibers to close the dorsal-horn gate (the body's own control on sharp pain) before the nociceptive signal arrives.
+- **Render the texture** — layered piezoelectric actuators paint pressure, movement, and fine texture onto the skin with spatial resolution a vibration motor can't reach: a felt surface, not a buzz.
+- **Bind them in time** — a shared clock fires both channels in visuo-haptic synchrony within about 4 milliseconds, so the brain commits to the illusion of embodiment.
+
+## Who it is for
+
+- **Pediatric immunizations** — sessions are gamified: children defeat the pathogen their vaccine protects against (age-scaled difficulty and haptic texture).
+- **Adults self-injecting** — GLP-1 weight-management pens and Type 1 Diabetes insulin.
+
+## Market context (sourced)
+
+- About **16 billion injections** are given worldwide each year (WHO).
+- About **1 in 10 US adults** now use a GLP-1 medication (CDC, 2025).
+- About **1 in 4 young adults** report a fear of needles (2019 meta-analysis).
+- DreamSleeve's **visuo-haptic sync budget is ~4 ms**.
+
+## Positioning
+
+- A single platform spanning a lifetime of injections (a child's first vaccine to an adult's weekly GLP-1 pen).
+- Differentiator: rivals use one modality (a vibration buzz, a cartoon distractor, or a current trickle); DreamSleeve synchronizes two.
+
+## Pages
+
+- [Home](https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/): the science, the gamified pediatric experience, and the market.
+
+## Notes
+
+- DreamSleeve is positioned as a General Wellness product under FDA policy for comfort, relaxation, and sensory soothing. It is not a cleared or approved medical device and makes no diagnostic or treatment claims.

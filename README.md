@@ -106,7 +106,7 @@ No bundler, transpiler, package manager, or CI is required. **What is in the rep
 │   ├── banner-template.html    # source for the README banner
 │   └── screenshots/*.png       # README imagery
 ├── site.webmanifest        # PWA manifest (subpath-relative start_url/scope)
-├── sitemap.xml · robots.txt · .nojekyll · CNAME.disabled
+├── sitemap.xml · robots.txt · llms.txt · .nojekyll · CNAME.disabled
 ├── README.md · PLAN.md · CHANGELOG.md
 ```
 
