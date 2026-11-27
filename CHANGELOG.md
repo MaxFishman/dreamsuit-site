@@ -6,6 +6,19 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 32: Section snapping + keyboard navigation
+- **Keyboard navigation**: Arrow Up/Down, Page Up/Down, and Home/End now move between
+  sections (skipped inside form fields / with modifier keys). Works with or without GSAP —
+  keyboard-only visitors can traverse the whole page.
+- **Gentle proximity snap**: after the wheel/trackpad settles *near* a section start, the page
+  snaps that section to just below the header. Proximity-only, so stopping mid-section never
+  yanks you — no scroll hijacking.
+- Both use **native smooth scroll** (not GSAP's ScrollToPlugin), which — unlike a plugin tween —
+  is never blocked by a ScrollTrigger pin.
+- **Un-pinned the hero**: the cinematic hero is now a scrub *parallax* (same push-in + dissolve)
+  rather than a hard pin, because a pinned section can't be reached by snap/arrow nav from below.
+  Everything else (parallax layers, replaying section reveals) is unchanged.
+
 ### 2026-11-26 — Step 31: Cinematic GSAP scroll (supersedes the CSS-snap approach)
 - Added **GSAP 3.12 + ScrollTrigger**, **vendored and self-hosted** in `assets/vendor/` (no CDN,
   no npm), loaded `defer`.

@@ -81,7 +81,7 @@ Real, sourced, dual-audience figures with inline attribution (WHO / CDC 2025 / 2
 | Markup | Hand-authored **HTML5** (`index.html`, ~360 lines) | One document, full SEO/OG/Twitter/JSON-LD, semantic landmarks |
 | Styles | One **CSS** file (`styles/main.css`, ~350 lines) | Custom-property design system, component classes, responsive, reduced-motion |
 | Behaviour | **Vanilla JS** (`scripts/main.js`, ~190 lines) | No framework; `defer`-loaded; rAF-throttled; passive listeners |
-| Motion | **GSAP 3.12 + ScrollTrigger** (`assets/vendor/`, vendored) | Cinematic scroll: hero scrub-pin, parallax layers, section reveals. Degrades to IO reveals |
+| Motion | **GSAP 3.12 + ScrollTrigger** (`assets/vendor/`, vendored) | Cinematic scroll: hero scrub parallax, parallax layers, section reveals, section snapping + keyboard nav. Degrades to IO reveals |
 | Fonts | Google Fonts (Space Grotesk, Inter, IBM Plex Mono) | `display=swap`, preconnected |
 | Analytics | GoatCounter (optional) | Cookie-less, privacy-friendly; loads only when configured |
 | Hosting | GitHub Pages (static) | `.nojekyll`, relative paths |
@@ -96,7 +96,7 @@ No bundler, transpiler, package manager, or CI is required. **What is in the rep
 ├── styles/
 │   └── main.css            # design tokens, components, responsive, reduced-motion
 ├── scripts/
-│   └── main.js             # cinematic scroll (GSAP) · reveals · count-ups · rail · mobile nav · scroll-spy
+│   └── main.js             # cinematic scroll (GSAP) · reveals · section nav (snap + keys) · rail · mobile nav · scroll-spy
 ├── assets/
 │   ├── vendor/             # gsap.min.js + ScrollTrigger.min.js (vendored, no CDN)
 │   ├── hero-arm.jpg        # hero photo (40 KB)
@@ -116,7 +116,8 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 
 | Module | Responsibility |
 |---|---|
-| **Cinematic scroll (GSAP)** | Hero scrub-pin (copy drifts up + dissolves while the arm photo pushes in), parallax layers (grid + headlines), and staggered section reveals that replay on re-entry. Gated behind `prefers-reduced-motion`; absent if GSAP fails to load |
+| **Cinematic scroll (GSAP)** | Hero scrub parallax (copy drifts up + dissolves while the arm photo pushes in), parallax layers (grid + headlines), and staggered section reveals that replay on re-entry. Gated behind `prefers-reduced-motion`; absent if GSAP fails to load |
+| **Section navigation** | Gentle proximity snap after the wheel/trackpad settles near a section start, plus **arrow / Page / Home / End** keyboard navigation (works with or without GSAP). Native smooth scroll, so it isn't blocked by any trigger |
 | **Scroll reveals (fallback)** | When GSAP isn't driving: `IntersectionObserver` adds `.is-in` to `[data-reveal]` elements; reduced-motion shows them immediately |
 | **Count-up stats** | Animates `[data-count]` numbers when they enter the viewport (eased, reduced-motion sets the final value) |
 | **Progress rail** | The left-edge rail "charges" from cyan to magenta as you scroll |
@@ -158,7 +159,7 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 ### Motion &amp; principles
 
 1. **Diegetic instrumentation** — the UI carries a HUD character: the progress rail charges, counters tick up, status pills read like live readouts.
-2. **Cinematic, but disciplined** — GSAP drives a scrub-pinned hero and parallax layers, and reveals cascade as sections enter; all of it is gated behind `prefers-reduced-motion` and degrades to static reveals.
+2. **Cinematic, but disciplined** — GSAP drives a scrub parallax hero and parallax layers, reveals cascade as sections enter, and sections snap gently into place; all of it is gated behind `prefers-reduced-motion` and degrades to static reveals.
 3. **Spend boldness once** — magenta is the rare charge colour; cyan is the workhorse.
 
 ---
@@ -211,6 +212,7 @@ Targets **WCAG 2.1 AA**. Verified:
 - **Contrast:** all text colours pass AA on their backgrounds (the small-label `--faint` was tuned to `#7587a0` for this).
 - **Semantics:** one `<h1>`, correct heading order, `<header>/<nav>/<main>/<footer>` landmarks, a working skip link to `#top`.
 - **Mobile nav:** hamburger toggle with `aria-expanded`/`aria-controls`, Escape to close, roving focus, visible focus ring.
+- **Keyboard navigation:** Arrow / Page / Home / End keys move between sections (ignored inside form fields and when modifier keys are held).
 - **Motion:** `prefers-reduced-motion` neutralises every animation; the WebGL-free design has no seizure/vestibular risk surface.
 - **Images:** decorative images use empty `alt` + `aria-hidden`.
 - Zoom is allowed (no `maximum-scale`), `lang="en"` is set, link text is descriptive.
