@@ -9,7 +9,7 @@
 [![Live site](https://img.shields.io/badge/live-dreamsuit.github.io-2FE4E4?style=flat-square&labelColor=05070E)](https://dreamsuit.github.io/DREAMSUIT-WEBSITE-MAIN/)
 [![Stack](https://img.shields.io/badge/stack-HTML%20%2B%20CSS%20%2B%20vanilla%20JS-2FE4E4?style=flat-square&labelColor=0B1220)](#-software-architecture)
 [![No build](https://img.shields.io/badge/build-none-38E88A?style=flat-square&labelColor=0B1220)](#-setup--local-development)
-[![Dependencies](https://img.shields.io/badge/runtime%20deps-0-38E88A?style=flat-square&labelColor=0B1220)](#-software-architecture)
+[![Motion](https://img.shields.io/badge/motion-GSAP%20ScrollTrigger%20(vendored)-2FE4E4?style=flat-square&labelColor=0B1220)](#-software-architecture)
 [![Accessibility](https://img.shields.io/badge/WCAG-2.1%20AA-F5C542?style=flat-square&labelColor=0B1220)](#-accessibility)
 [![Host](https://img.shields.io/badge/host-GitHub%20Pages-FF3DD8?style=flat-square&labelColor=0B1220)](#-deployment)
 
@@ -39,8 +39,8 @@
 
 DreamSleeve is a dual-action wearable sleeve: **TENS** neurostimulation engages the spinal Gate Control Theory of pain while **high-frequency piezoelectric** actuators render tactile texture, in synchrony, turning a passive injection into an active, embodied experience. This site is the **investor- and customer-facing** story for the product.
 
-- **One page, no framework, no build step.** Hand-authored HTML, one CSS design system, and ~130 lines of vanilla JavaScript.
-- **Zero runtime dependencies** bundled in the repo. The only third party is Google Fonts (CSS); optional cookie-less GoatCounter analytics load only if a site code is configured.
+- **One page, no framework, no build step.** Hand-authored HTML, one CSS design system, and ~190 lines of vanilla JavaScript.
+- **Cinematic scroll** via **GSAP + ScrollTrigger** — vendored and self-hosted in `assets/vendor/` (no CDN, no npm), loaded `defer`. It's a progressive enhancement: if the libs don't load, or the visitor prefers reduced motion, the site degrades to `IntersectionObserver` reveals. The only other third party is Google Fonts (CSS); optional cookie-less GoatCounter analytics load only if a site code is configured.
 - **Deploys anywhere static.** Every asset path is relative, so it runs correctly from a domain root *or* a GitHub Pages project sub-path.
 - **Accessible and fast.** WCAG 2.1 AA colour contrast, a keyboard-accessible mobile nav, `prefers-reduced-motion` support, lazy-loaded imagery.
 
@@ -80,7 +80,8 @@ Real, sourced, dual-audience figures with inline attribution (WHO / CDC 2025 / 2
 |---|---|---|
 | Markup | Hand-authored **HTML5** (`index.html`, ~360 lines) | One document, full SEO/OG/Twitter/JSON-LD, semantic landmarks |
 | Styles | One **CSS** file (`styles/main.css`, ~350 lines) | Custom-property design system, component classes, responsive, reduced-motion |
-| Behaviour | **Vanilla JS** (`scripts/main.js`, ~130 lines) | No framework; `defer`-loaded; rAF-throttled; passive listeners |
+| Behaviour | **Vanilla JS** (`scripts/main.js`, ~190 lines) | No framework; `defer`-loaded; rAF-throttled; passive listeners |
+| Motion | **GSAP 3.12 + ScrollTrigger** (`assets/vendor/`, vendored) | Cinematic scroll: hero scrub-pin, parallax layers, section reveals. Degrades to IO reveals |
 | Fonts | Google Fonts (Space Grotesk, Inter, IBM Plex Mono) | `display=swap`, preconnected |
 | Analytics | GoatCounter (optional) | Cookie-less, privacy-friendly; loads only when configured |
 | Hosting | GitHub Pages (static) | `.nojekyll`, relative paths |
@@ -95,8 +96,9 @@ No bundler, transpiler, package manager, or CI is required. **What is in the rep
 ├── styles/
 │   └── main.css            # design tokens, components, responsive, reduced-motion
 ├── scripts/
-│   └── main.js             # scroll reveals · count-ups · progress rail · mobile nav · scroll-spy
+│   └── main.js             # cinematic scroll (GSAP) · reveals · count-ups · rail · mobile nav · scroll-spy
 ├── assets/
+│   ├── vendor/             # gsap.min.js + ScrollTrigger.min.js (vendored, no CDN)
 │   ├── hero-arm.jpg        # hero photo (40 KB)
 │   ├── og-image.png        # 1200×630 social share card
 │   ├── favicon.svg · favicon-32.png · apple-touch-icon.png
@@ -114,7 +116,8 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 
 | Module | Responsibility |
 |---|---|
-| **Scroll reveals** | `IntersectionObserver` adds `.is-in` to `[data-reveal]` elements once; reduced-motion shows them immediately |
+| **Cinematic scroll (GSAP)** | Hero scrub-pin (copy drifts up + dissolves while the arm photo pushes in), parallax layers (grid + headlines), and staggered section reveals that replay on re-entry. Gated behind `prefers-reduced-motion`; absent if GSAP fails to load |
+| **Scroll reveals (fallback)** | When GSAP isn't driving: `IntersectionObserver` adds `.is-in` to `[data-reveal]` elements; reduced-motion shows them immediately |
 | **Count-up stats** | Animates `[data-count]` numbers when they enter the viewport (eased, reduced-motion sets the final value) |
 | **Progress rail** | The left-edge rail "charges" from cyan to magenta as you scroll |
 | **Mobile nav** | Hamburger toggle (`aria-expanded`/`aria-controls`); opens a dropdown below 920px, closes on Escape / link tap / resize |
@@ -155,7 +158,7 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 ### Motion &amp; principles
 
 1. **Diegetic instrumentation** — the UI carries a HUD character: the progress rail charges, counters tick up, status pills read like live readouts.
-2. **Restraint over spectacle** — scroll reveals and count-ups are subtle and one-shot; motion never competes with the copy.
+2. **Cinematic, but disciplined** — GSAP drives a scrub-pinned hero and parallax layers, and reveals cascade as sections enter; all of it is gated behind `prefers-reduced-motion` and degrades to static reveals.
 3. **Spend boldness once** — magenta is the rare charge colour; cyan is the workhorse.
 
 ---
@@ -216,7 +219,7 @@ Targets **WCAG 2.1 AA**. Verified:
 
 ## ⚡ Performance
 
-- **No framework, no runtime dependencies.** `scripts/main.js` is ~5 KB of vanilla JS, `defer`-loaded, with a single rAF-throttled scroll loop and passive listeners.
+- **No framework, no build step.** `scripts/main.js` is ~8 KB of vanilla JS, `defer`-loaded, with a single rAF-throttled scroll loop and passive listeners. GSAP + ScrollTrigger add ~113 KB (minified, ~45 KB gzipped), also `defer`-loaded so they never block first paint; the cinematic layer is a progressive enhancement.
 - **Imagery is light:** the hero photo is 40 KB and lazy-decoded; no other raster assets ship on the page.
 - **No layout shift:** every content image has explicit `width`/`height`; below-the-fold images are `loading="lazy"`.
 - Fonts preconnect and use `display=swap`.

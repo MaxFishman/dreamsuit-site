@@ -6,6 +6,19 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 31: Cinematic GSAP scroll (supersedes the CSS-snap approach)
+- Added **GSAP 3.12 + ScrollTrigger**, **vendored and self-hosted** in `assets/vendor/` (no CDN,
+  no npm), loaded `defer`.
+- **Cinematic scroll**: the hero is a **scrub-pinned** transition (copy drifts up and dissolves
+  while the arm photo pushes in via parallax); the background grid and every section headline
+  are **parallax layers**; section content reveals in a **staggered cascade that replays** each
+  time a section re-enters the viewport.
+- **Progressive enhancement**: wrapped behind a `gsapReady` guard — if the libs fail to load, or
+  the visitor prefers reduced motion, the site falls back to the existing `IntersectionObserver`
+  reveals (verified: reduced motion creates 0 ScrollTriggers and shows all content statically).
+- Updated the README (dependency/stack/perf/motion sections) to reflect the vendored libraries.
+  This replaces the lightweight CSS `scroll-snap` direction explored in PR #19.
+
 ### 2026-11-26 — Step 30: Sync README + remove dead code after section removals
 - **README** brought in line with the current lean site (Hero · Science · Game · Market):
   dropped the Pathway and Ask/form walkthrough entries + their screenshots, removed the

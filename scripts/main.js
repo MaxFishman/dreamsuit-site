@@ -7,6 +7,12 @@
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* GSAP cinematic scroll is a progressive enhancement: only when the vendored
+     libs loaded AND the visitor hasn't asked for reduced motion. Otherwise the
+     site falls back to the IntersectionObserver reveals below. */
+  var gsapReady = !reduce && !!window.gsap && !!window.ScrollTrigger;
+  if (gsapReady) document.documentElement.classList.add("gsap");
+
   /* current year in footer */
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
@@ -27,17 +33,19 @@
     railCharge.style.height = (pct * 100).toFixed(2) + "%";
   }
 
-  /* ---------- reveal on scroll ---------- */
-  var reveals = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
-  if (reduce || !("IntersectionObserver" in window)) {
-    reveals.forEach(function (el) { el.classList.add("is-in"); });
-  } else {
-    var revObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add("is-in"); revObs.unobserve(e.target); }
-      });
-    }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach(function (el) { revObs.observe(el); });
+  /* ---------- reveal on scroll (fallback when GSAP is not driving) ---------- */
+  if (!gsapReady) {
+    var reveals = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+    if (reduce || !("IntersectionObserver" in window)) {
+      reveals.forEach(function (el) { el.classList.add("is-in"); });
+    } else {
+      var revObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("is-in"); revObs.unobserve(e.target); }
+        });
+      }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+      reveals.forEach(function (el) { revObs.observe(el); });
+    }
   }
 
   /* ---------- count-up numbers ---------- */
@@ -128,4 +136,56 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScrollRail, { passive: true });
   onScroll();
+
+  /* ---------- cinematic scroll (GSAP ScrollTrigger) ---------- */
+  if (gsapReady) {
+    gsap.registerPlugin(ScrollTrigger);
+    var ease = "power3.out";
+
+    /* 1. Hero: cascade the copy in on load, then a scrub-pinned parallax exit —
+       the arm photo pushes in while the copy drifts up and dissolves. */
+    gsap.fromTo(".hero [data-reveal]",
+      { opacity: 0, y: 26 },
+      { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: ease, delay: 0.15 });
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero", start: "top top", end: "+=70%",
+        scrub: 0.6, pin: true, pinSpacing: true, anticipatePin: 1
+      }
+    })
+      .to(".hero__inner", { yPercent: -14, opacity: 0, ease: "none" }, 0)
+      .to(".hero__photo img", { yPercent: 10, scale: 1.14, ease: "none" }, 0)
+      .to(".scroll-cue", { opacity: 0, ease: "none", duration: 0.25 }, 0);
+
+    /* 2. Parallax layers: the background grid and each headline drift at their
+       own rate as they pass, adding depth. */
+    gsap.to(".grid-canvas", {
+      yPercent: 12, ease: "none",
+      scrollTrigger: { trigger: document.body, start: "top top", end: "bottom bottom", scrub: true }
+    });
+    gsap.utils.toArray(".section__title").forEach(function (t) {
+      gsap.fromTo(t, { yPercent: 9 }, {
+        yPercent: -9, ease: "none",
+        scrollTrigger: { trigger: t, start: "top bottom", end: "bottom top", scrub: true }
+      });
+    });
+
+    /* 3. Section content: a staggered cascade that plays in and reverses out,
+       so each section re-animates every time it re-enters the viewport. */
+    gsap.utils.toArray("main > section:not(.hero)").forEach(function (sec) {
+      var items = sec.querySelectorAll("[data-reveal]");
+      if (!items.length) return;
+      gsap.set(items, { opacity: 0, y: 36, scale: 0.985 });
+      ScrollTrigger.create({
+        trigger: sec, start: "top 78%",
+        onEnter: show, onEnterBack: show, onLeave: hide, onLeaveBack: hide
+      });
+      function show() { gsap.to(items, { opacity: 1, y: 0, scale: 1, duration: 0.75, stagger: 0.09, ease: ease, overwrite: true }); }
+      function hide() { gsap.to(items, { opacity: 0, y: 36, scale: 0.985, duration: 0.3, overwrite: true }); }
+    });
+
+    /* re-measure once fonts/images settle so pins + triggers line up */
+    window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+  }
 })();

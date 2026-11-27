@@ -211,6 +211,9 @@ mark {
 /* ---------- reveal animation ---------- */
 [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 [data-reveal].is-in { opacity: 1; transform: none; }
+/* when GSAP drives the cinematic scroll it owns these tweens — drop the CSS
+   transition so the two engines don't fight over the same properties */
+html.gsap [data-reveal] { transition: none; }
 
 /* ---------- science pillars ---------- */
 .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
