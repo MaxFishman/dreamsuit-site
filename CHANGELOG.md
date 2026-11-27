@@ -6,6 +6,16 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 31: Section snap-scroll + staggered reveals
+- **Native CSS scroll-snap** (`scroll-snap-type: y proximity` on `html`, `scroll-snap-align: start`
+  on the hero + every section, `scroll-padding-top` to clear the fixed header). Proximity, not
+  mandatory, so tall sections never trap the user — no scroll hijacking.
+- **Upgraded reveal animations**: elements now rise + settle with a per-section **staggered
+  cascade** (`--rvi` index) and a subtle scale, and they **replay each time a section snaps back
+  into view** (IntersectionObserver toggles `.is-in` instead of firing once).
+- Fully **`prefers-reduced-motion`-safe**: snapping and all reveal transitions are disabled.
+  No new dependencies.
+
 ### 2026-11-26 — Step 30: Sync README + remove dead code after section removals
 - **README** brought in line with the current lean site (Hero · Science · Game · Market):
   dropped the Pathway and Ask/form walkthrough entries + their screenshots, removed the

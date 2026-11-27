@@ -27,16 +27,20 @@
     railCharge.style.height = (pct * 100).toFixed(2) + "%";
   }
 
-  /* ---------- reveal on scroll ---------- */
+  /* ---------- reveal on scroll (staggered, replays as sections snap in) ---------- */
   var reveals = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+  /* stagger index: each element's position within its section drives the cascade */
+  Array.prototype.slice.call(document.querySelectorAll("main > section")).forEach(function (sec) {
+    Array.prototype.slice.call(sec.querySelectorAll("[data-reveal]")).forEach(function (el, i) {
+      el.style.setProperty("--rvi", Math.min(i, 6));
+    });
+  });
   if (reduce || !("IntersectionObserver" in window)) {
     reveals.forEach(function (el) { el.classList.add("is-in"); });
   } else {
     var revObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add("is-in"); revObs.unobserve(e.target); }
-      });
-    }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+      entries.forEach(function (e) { e.target.classList.toggle("is-in", e.isIntersecting); });
+    }, { threshold: 0.18, rootMargin: "0px 0px -6% 0px" });
     reveals.forEach(function (el) { revObs.observe(el); });
   }
 

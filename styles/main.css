@@ -43,8 +43,15 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html {
+  scroll-behavior: smooth;
+  /* gentle section snapping — proximity never traps tall sections */
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 72px; /* clear the fixed header on snap */
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; scroll-snap-type: none; }
+}
 
 body {
   margin: 0;
@@ -155,7 +162,7 @@ mark {
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 
 /* ---------- layout primitives ---------- */
-.section { max-width: var(--maxw); margin-inline: auto; padding: clamp(80px, 12vh, 150px) var(--gutter); }
+.section { max-width: var(--maxw); margin-inline: auto; padding: clamp(80px, 12vh, 150px) var(--gutter); scroll-snap-align: start; }
 .section__head { max-width: 760px; margin-bottom: 56px; }
 .section__title { font-size: clamp(1.9rem, 4.4vw, var(--t-3xl)); font-weight: 600; }
 .section__intro { margin-top: 20px; color: var(--muted); font-size: var(--t-md); max-width: 62ch; }
@@ -165,7 +172,7 @@ mark {
 .hero {
   min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
   align-items: flex-start; text-align: left; padding: 120px var(--gutter) 80px; position: relative;
-  overflow: hidden;
+  overflow: hidden; scroll-snap-align: start;
 }
 .hero__inner { max-width: 640px; width: 100%; min-width: 0; position: relative; z-index: 2; }
 
@@ -209,8 +216,17 @@ mark {
 @keyframes cue { 0%,100%{opacity:.3; transform:scaleY(.6);} 50%{opacity:1; transform:scaleY(1);} }
 
 /* ---------- reveal animation ---------- */
-[data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+/* staggered, replay-on-enter reveals paired with the section snap.
+   --rvi is the element's index within its section (set in JS) for a cascade. */
+[data-reveal] {
+  opacity: 0; transform: translateY(30px) scale(.985);
+  transition: opacity .66s var(--ease), transform .66s var(--ease);
+  transition-delay: calc(var(--rvi, 0) * 70ms);
+  will-change: opacity, transform;
+}
 [data-reveal].is-in { opacity: 1; transform: none; }
+/* section + hero headlines travel a touch further for emphasis */
+.section__title[data-reveal], .hero__title[data-reveal] { transform: translateY(42px) scale(.98); }
 
 /* ---------- science pillars ---------- */
 .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
@@ -344,6 +360,6 @@ mark {
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; transition-delay: 0s; }
   .scroll-cue span { animation: none; }
 }
