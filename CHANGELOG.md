@@ -6,6 +6,11 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 29: Trim footer legal text
+- Shortened the footer disclaimer to just the **General Wellness** statement (not a cleared/
+  approved device, no diagnostic/treatment claims). Removed the "Class II clearance / EPSDT
+  reimbursement / planned pathways" and "illustrative pending verification" sentences.
+
 ### 2026-11-26 — Step 28: Fold the session steps into the Science slide
 - **Merged the "session, as the child plays it" 4-step list into the Science section** as a
   static stepper (Fitting & Calibration → Antiseptic Prep & Shield Charge → Shield Strike &
