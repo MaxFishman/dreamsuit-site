@@ -266,8 +266,11 @@
           if (y < heroEnd + 10) return;
           if ((window.innerHeight + y) >= (document.documentElement.scrollHeight - 2)) return;
           var ts = targets(), t = ts[nearestIndex(ts)], dist = Math.abs(t - y);
-          if (dist > 3 && dist < window.innerHeight * 0.32) go(t);
-        }, 150);
+          /* snap firmly — a wide 0.7×viewport zone grabs most stops; the only free
+             area left is the deep middle of a section taller than ~1.4 viewports,
+             so reading long content is never interrupted */
+          if (dist > 3 && dist < window.innerHeight * 0.7) go(t);
+        }, 100);
       }, { passive: true });
     }
   })();

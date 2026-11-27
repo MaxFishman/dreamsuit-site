@@ -6,6 +6,12 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 33: Firmer section snapping
+- Widened the proximity-snap zone from **0.32 → 0.7 × viewport** and sped up the settle
+  detection (150 → 100 ms), so sections snap into place much more decisively. Short sections
+  (hero, science) now snap fully to their tops; a section taller than ~1.4 viewports keeps a
+  free reading zone in its deep middle, so long content is still never yanked.
+
 ### 2026-11-26 — Step 32: Section snapping + keyboard navigation
 - **Keyboard navigation**: Arrow Up/Down, Page Up/Down, and Home/End now move between
   sections (skipped inside form fields / with modifier keys). Works with or without GSAP —
