@@ -6,6 +6,11 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 36: Gentler section snapping
+- Dialed the proximity-snap back from `0.7 → 0.45 × viewport` and relaxed the settle delay
+  (100 → 140 ms), so scrolling feels less grabby — it only nudges into place when you stop
+  reasonably near a section start, and otherwise leaves the scroll alone.
+
 ### 2026-11-26 — Step 35: SEO + GEO pass
 - **Sitemap** refreshed (`lastmod` → current).
 - **`llms.txt`** added — a factual, source-cited summary of DreamSleeve for AI answer engines
