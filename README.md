@@ -39,8 +39,8 @@
 
 DreamSleeve is a dual-action wearable sleeve: **TENS** neurostimulation engages the spinal Gate Control Theory of pain while **high-frequency piezoelectric** actuators render tactile texture, in synchrony, turning a passive injection into an active, embodied experience. This site is the **investor- and customer-facing** story for the product.
 
-- **One page, no framework, no build step.** Hand-authored HTML, one CSS design system, and ~195 lines of vanilla JavaScript.
-- **Zero runtime dependencies** bundled in the repo. The only third parties are Google Fonts (CSS) and Formspree (the contact form POST endpoint).
+- **One page, no framework, no build step.** Hand-authored HTML, one CSS design system, and ~130 lines of vanilla JavaScript.
+- **Zero runtime dependencies** bundled in the repo. The only third party is Google Fonts (CSS); optional cookie-less GoatCounter analytics load only if a site code is configured.
 - **Deploys anywhere static.** Every asset path is relative, so it runs correctly from a domain root *or* a GitHub Pages project sub-path.
 - **Accessible and fast.** WCAG 2.1 AA colour contrast, a keyboard-accessible mobile nav, `prefers-reduced-motion` support, lazy-loaded imagery.
 
@@ -51,7 +51,7 @@ The neuro-tech "HUD" aesthetic (deep-space navy, cyan signal, magenta charge, pa
 ## 🖼 Site walkthrough
 
 ### Hero
-The opening statement, over a photographic arm wearing the sleeve with a glowing cyan wireframe overlay (right-anchored, CSS-masked into the void). Headline, dual-audience lede, and the two primary CTAs.
+The opening statement, over a photographic arm wearing the sleeve with a glowing cyan wireframe overlay (right-anchored, CSS-masked into the void). Headline, dual-audience lede, and a CTA into the science.
 
 ![Hero](docs/screenshots/hero.png)
 
@@ -70,16 +70,6 @@ Real, sourced, dual-audience figures with inline attribution (WHO / CDC 2025 / 2
 
 ![Market](docs/screenshots/market.png)
 
-### The regulatory pathway
-A three-stage on-ramp: ship now under **FDA General Wellness** → collect RCT evidence toward **Class II** → unlock **Medicaid EPSDT** reimbursement and HSA/HRA direct-to-consumer sales.
-
-![Pathway](docs/screenshots/pathway.png)
-
-### The ask: lead-capture form
-An on-site **Formspree** form (name, email, organization, interest, message) that submits via AJAX and shows inline success/error without leaving the page.
-
-![Ask / form](docs/screenshots/ask.png)
-
 ---
 
 ## 🏗 Software architecture
@@ -88,11 +78,10 @@ An on-site **Formspree** form (name, email, organization, interest, message) tha
 
 | Layer | Choice | Why |
 |---|---|---|
-| Markup | Hand-authored **HTML5** (`index.html`, ~520 lines) | One document, full SEO/OG/Twitter/JSON-LD, semantic landmarks |
-| Styles | One **CSS** file (`styles/main.css`, ~450 lines) | Custom-property design system, component classes, responsive, reduced-motion |
-| Behaviour | **Vanilla JS** (`scripts/main.js`, ~195 lines) | No framework; `defer`-loaded; rAF-throttled; passive listeners |
+| Markup | Hand-authored **HTML5** (`index.html`, ~360 lines) | One document, full SEO/OG/Twitter/JSON-LD, semantic landmarks |
+| Styles | One **CSS** file (`styles/main.css`, ~350 lines) | Custom-property design system, component classes, responsive, reduced-motion |
+| Behaviour | **Vanilla JS** (`scripts/main.js`, ~130 lines) | No framework; `defer`-loaded; rAF-throttled; passive listeners |
 | Fonts | Google Fonts (Space Grotesk, Inter, IBM Plex Mono) | `display=swap`, preconnected |
-| Forms | Formspree (AJAX POST) | Lead capture with no backend |
 | Analytics | GoatCounter (optional) | Cookie-less, privacy-friendly; loads only when configured |
 | Hosting | GitHub Pages (static) | `.nojekyll`, relative paths |
 
@@ -106,7 +95,7 @@ No bundler, transpiler, package manager, or CI is required. **What is in the rep
 ├── styles/
 │   └── main.css            # design tokens, components, responsive, reduced-motion
 ├── scripts/
-│   └── main.js             # scroll reveals · count-ups · progress rail · mobile nav · scroll-spy · form AJAX
+│   └── main.js             # scroll reveals · count-ups · progress rail · mobile nav · scroll-spy
 ├── assets/
 │   ├── hero-arm.jpg        # hero photo (40 KB)
 │   ├── og-image.png        # 1200×630 social share card
@@ -130,7 +119,6 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 | **Progress rail** | The left-edge rail "charges" from cyan to magenta as you scroll |
 | **Mobile nav** | Hamburger toggle (`aria-expanded`/`aria-controls`); opens a dropdown below 920px, closes on Escape / link tap / resize |
 | **Active-nav scroll-spy** | `IntersectionObserver` highlights the in-view section's nav link (`aria-current`) |
-| **Lead form** | Formspree AJAX submit with inline success/error, honeypot, required-field validation, graceful "not connected" state |
 
 ### CSS architecture (`styles/main.css`)
 
@@ -205,13 +193,11 @@ Hosted on **GitHub Pages** as a project page at **`https://dreamsuit.github.io/D
 
 Search the repo and fill these in:
 
-- **Lead-capture form (Formspree):** wired to endpoint `mljbvovv` (the `<form action>` in `index.html`). Submissions land in the Formspree dashboard / notification email. To change it, swap the form ID in the action.
 - **Analytics (GoatCounter):** privacy-friendly, no cookies. Register a free site at [goatcounter.com](https://www.goatcounter.com/), then replace `YOUR_CODE` in the analytics snippet near the bottom of `index.html` with your subdomain. Until configured, nothing is loaded or sent.
-- **`INFO NEEDED` fields** (magenta tags in the UI; grep `index.html` for `INFO NEEDED`): traction milestones, leaderboard season score, and the contact email. The Market stats are already real sourced figures (see the `<i>` source tags).
-- **Email:** `invest@dreamsleeve.com` is a placeholder in the form's fallback line. Swap for a real inbox.
+- **`INFO NEEDED` field** (magenta tag in the UI; grep `index.html` for `INFO NEEDED`): the leaderboard season score in the Game section. The Market stats are already real sourced figures (see the `<i>` source tags).
 - **Host URL:** only change if you move to a custom domain (see Deployment).
 
-> Illustrative-only tags (`[titles illustrative]`, `[status: pre-submission]`) are clarifiers, not missing data.
+> The `[titles illustrative]` tag on the game titles is a clarifier, not missing data.
 
 ---
 
@@ -230,7 +216,7 @@ Targets **WCAG 2.1 AA**. Verified:
 
 ## ⚡ Performance
 
-- **No framework, no runtime dependencies.** `scripts/main.js` is ~8 KB of vanilla JS, `defer`-loaded, with a single rAF-throttled scroll loop and passive listeners.
+- **No framework, no runtime dependencies.** `scripts/main.js` is ~5 KB of vanilla JS, `defer`-loaded, with a single rAF-throttled scroll loop and passive listeners.
 - **Imagery is light:** the hero photo is 40 KB and lazy-decoded; no other raster assets ship on the page.
 - **No layout shift:** every content image has explicit `width`/`height`; below-the-fold images are `loading="lazy"`.
 - Fonts preconnect and use `display=swap`.
@@ -251,4 +237,4 @@ Render any template with: `chrome --headless --screenshot=out.png --window-size=
 
 ## ⚠ Disclaimer
 
-DreamSleeve is positioned as a **General Wellness** product under FDA policy for comfort, relaxation, and sensory soothing. It is **not** a cleared or approved medical device and makes no diagnostic or treatment claims. Class II clearance, EPSDT reimbursement, and the clinical outcomes described are **planned pathways, not current status**. Figures tagged `INFO NEEDED` are illustrative pending verification.
+DreamSleeve is positioned as a **General Wellness** product under FDA policy for comfort, relaxation, and sensory soothing. It is **not** a cleared or approved medical device and makes no diagnostic or treatment claims.

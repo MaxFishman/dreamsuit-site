@@ -6,6 +6,16 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 30: Sync README + remove dead code after section removals
+- **README** brought in line with the current lean site (Hero · Science · Game · Market):
+  dropped the Pathway and Ask/form walkthrough entries + their screenshots, removed the
+  Formspree/lead-form rows from the stack and JS-module tables, trimmed the Configuration and
+  Disclaimer sections, and refreshed the line-count figures.
+- **Removed orphaned code** left behind by the section removal: the lead-form JS controller,
+  and the `.timeline`/`.ask*`/`.lead-form*`/`.phase*`/`.pill*`/`.pathway__foot`/`.header-cta`/
+  `.btn--ghost`/`.btn--lg`/`.sr-only` CSS (all confirmed 0 usages). Deleted the now-unused
+  `pathway.png` and `ask.png` screenshots. (CSS ~450→~350, JS ~195→~130 lines.)
+
 ### 2026-11-26 — Step 29: Trim footer legal text
 - Shortened the footer disclaimer to just the **General Wellness** statement (not a cleared/
   approved device, no diagnostic/treatment claims). Removed the "Class II clearance / EPSDT

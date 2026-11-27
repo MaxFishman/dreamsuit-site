@@ -70,34 +70,6 @@
     counters.forEach(function (el) { cObs.observe(el); });
   }
 
-  /* ---------- lead-capture form (Formspree AJAX) ---------- */
-  var leadForm = document.querySelector(".lead-form");
-  if (leadForm) {
-    var leadStatus = leadForm.querySelector(".lead-form__status");
-    var setStatus = function (msg, cls) { leadStatus.textContent = msg; leadStatus.className = "lead-form__status" + (cls ? " " + cls : ""); };
-    leadForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var action = leadForm.getAttribute("action") || "";
-      if (/YOUR_FORM_ID|INFO[_ ]?NEEDED/i.test(action)) {
-        setStatus("Form isn't connected yet: add your Formspree ID.", "is-error");
-        return;
-      }
-      if (!leadForm.checkValidity()) { leadForm.reportValidity(); return; }
-      var btn = leadForm.querySelector('button[type="submit"]');
-      btn.disabled = true; setStatus("Sending…");
-      fetch(action, { method: "POST", body: new FormData(leadForm), headers: { Accept: "application/json" } })
-        .then(function (res) {
-          if (res.ok) { leadForm.reset(); setStatus("Thanks, we'll be in touch shortly.", "is-ok"); return; }
-          return res.json().then(function (data) {
-            var m = data && data.errors ? data.errors.map(function (x) { return x.message; }).join(", ") : "Something went wrong. Please email us.";
-            setStatus(m, "is-error");
-          });
-        })
-        .catch(function () { setStatus("Network error. Try again, or email us directly.", "is-error"); })
-        .then(function () { btn.disabled = false; });
-    });
-  }
-
   /* ---------- mobile nav toggle ---------- */
   var navToggle = document.getElementById("navToggle");
   var primaryNav = document.getElementById("primaryNav");
