@@ -101,6 +101,49 @@ mark {
   box-shadow: 0 0 12px var(--signal);
 }
 
+/* ---------- loading splash ---------- */
+html.splash-lock { overflow: hidden; }
+#splash {
+  position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center;
+  background:
+    radial-gradient(900px 560px at 50% 42%, rgba(47,228,228,.10), transparent 62%),
+    radial-gradient(700px 460px at 50% 120%, rgba(255,61,216,.07), transparent 55%),
+    linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 44px 44px,
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 44px 44px,
+    var(--void);
+  will-change: opacity, transform;
+}
+.splash__stage { display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 24px; }
+.splash__mark { display: block; filter: drop-shadow(0 0 18px rgba(47,228,228,.4)); }
+.splash__mark svg { display: block; }
+.splash__ring { stroke: var(--line); }
+.splash__arc {
+  stroke: var(--signal); stroke-dasharray: 70 210; transform-box: fill-box; transform-origin: center;
+  animation: splashSpin 1.15s linear infinite;
+}
+.splash__rays {
+  stroke: var(--signal); transform-box: fill-box; transform-origin: center;
+  animation: splashSpin 9s linear infinite reverse; opacity: .9;
+}
+.splash__core { fill: var(--signal); animation: splashPulse 1.6s ease-in-out infinite; }
+.splash__word {
+  font-family: var(--display); font-weight: 700; font-size: clamp(1.6rem, 5vw, 2.1rem); letter-spacing: -.03em;
+  background: linear-gradient(180deg, #fff 32%, #a9c4d6); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.splash__bar { position: relative; width: min(220px, 60vw); height: 2px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.splash__bar i {
+  position: absolute; inset: 0; width: 0; display: block; border-radius: 2px;
+  background: linear-gradient(90deg, var(--signal), var(--pulse)); box-shadow: 0 0 10px var(--signal);
+  animation: splashBar 1.5s cubic-bezier(.4,0,.1,1) forwards;
+}
+.splash__status {
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; color: var(--faint);
+}
+#splash.is-done { opacity: 0; pointer-events: none; transition: opacity .6s var(--ease); }
+@keyframes splashSpin { to { transform: rotate(360deg); } }
+@keyframes splashPulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+@keyframes splashBar { 0% { width: 0; } 72% { width: 88%; } 100% { width: 100%; } }
+
 /* ---------- buttons ---------- */
 .btn {
   --bg: transparent;

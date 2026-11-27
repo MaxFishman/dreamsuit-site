@@ -6,6 +6,16 @@ Dates are absolute (YYYY-MM-DD).
 
 ## [Unreleased]
 
+### 2026-11-26 — Step 34: Brand loading splash
+- Added a full-screen **loading splash** shown on homepage load: the brand's radiant-node mark
+  (pulsing cyan core, rotating rays, a spinning loader arc), the **DreamSleeve** wordmark, a
+  cyan→magenta progress bar, and a mono "CALIBRATING DUAL-HAPTIC CHANNELS" HUD label over the
+  engineering-grid void background.
+- Painted from static HTML/CSS so it covers instantly; **GSAP timeline** orchestrates the
+  dismissal (stage drifts up + fades) after a ~1.5 s minimum once the page has loaded. Locks
+  scroll while visible, tap-to-skip, 5 s safety cap. `prefers-reduced-motion` shortens it and
+  drops the motion; a CSS fade is the fallback if GSAP is absent. `role="status"` for AT.
+
 ### 2026-11-26 — Step 33: Firmer section snapping
 - Widened the proximity-snap zone from **0.32 → 0.7 × viewport** and sped up the settle
   detection (150 → 100 ms), so sections snap into place much more decisively. Short sections

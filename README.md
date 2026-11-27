@@ -96,7 +96,7 @@ No bundler, transpiler, package manager, or CI is required. **What is in the rep
 ├── styles/
 │   └── main.css            # design tokens, components, responsive, reduced-motion
 ├── scripts/
-│   └── main.js             # cinematic scroll (GSAP) · reveals · section nav (snap + keys) · rail · mobile nav · scroll-spy
+│   └── main.js             # loading splash · cinematic scroll (GSAP) · reveals · section nav (snap + keys) · mobile nav · scroll-spy
 ├── assets/
 │   ├── vendor/             # gsap.min.js + ScrollTrigger.min.js (vendored, no CDN)
 │   ├── hero-arm.jpg        # hero photo (40 KB)
@@ -116,6 +116,7 @@ All logic lives in a single IIFE, is `prefers-reduced-motion`-aware, and runs wi
 
 | Module | Responsibility |
 |---|---|
+| **Loading splash** | Brand splash on load (radiant-node mark + wordmark + progress bar + HUD label); GSAP-timeline dismissal after a ~1.5 s minimum, scroll-locked, tap-to-skip, reduced-motion-aware, CSS fade fallback |
 | **Cinematic scroll (GSAP)** | Hero scrub parallax (copy drifts up + dissolves while the arm photo pushes in), parallax layers (grid + headlines), and staggered section reveals that replay on re-entry. Gated behind `prefers-reduced-motion`; absent if GSAP fails to load |
 | **Section navigation** | Gentle proximity snap after the wheel/trackpad settles near a section start, plus **arrow / Page / Home / End** keyboard navigation (works with or without GSAP). Native smooth scroll, so it isn't blocked by any trigger |
 | **Scroll reveals (fallback)** | When GSAP isn't driving: `IntersectionObserver` adds `.is-in` to `[data-reveal]` elements; reduced-motion shows them immediately |

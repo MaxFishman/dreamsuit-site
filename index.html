@@ -75,6 +75,25 @@
 </head>
 
 <body>
+  <!-- ==== LOADING SPLASH (brand-styled; GSAP-orchestrated dismissal, CSS fallback) ==== -->
+  <div id="splash" role="status" aria-label="Loading DreamSleeve">
+    <div class="splash__stage" aria-hidden="true">
+      <span class="splash__mark">
+        <svg viewBox="0 0 120 120" width="112" height="112" fill="none" aria-hidden="true">
+          <circle class="splash__ring" cx="60" cy="60" r="44" stroke-width="2" />
+          <circle class="splash__arc" cx="60" cy="60" r="44" stroke-width="2.5" stroke-linecap="round" />
+          <g class="splash__rays" stroke-width="3" stroke-linecap="round">
+            <path d="M60 10v16M60 94v16M10 60h16M94 60h16M24.6 24.6l11.3 11.3M84.1 84.1l11.3 11.3M95.4 24.6L84.1 35.9M35.9 84.1L24.6 95.4" />
+          </g>
+          <circle class="splash__core" cx="60" cy="60" r="15" />
+        </svg>
+      </span>
+      <span class="splash__word">DreamSleeve</span>
+      <span class="splash__bar"><i></i></span>
+      <span class="splash__status">Calibrating dual-haptic channels</span>
+    </div>
+  </div>
+
   <a class="skip-link" href="#top">Skip to content</a>
 
   <!-- Engineering grid + scroll progress rail -->

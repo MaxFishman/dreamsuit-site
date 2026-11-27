@@ -13,6 +13,36 @@
   var gsapReady = !reduce && !!window.gsap && !!window.ScrollTrigger;
   if (gsapReady) document.documentElement.classList.add("gsap");
 
+  /* ---------- loading splash ---------- */
+  (function () {
+    var splash = document.getElementById("splash");
+    if (!splash) return;
+    var root = document.documentElement;
+    root.classList.add("splash-lock");
+    var now = function () { return (window.performance && performance.now) ? performance.now() : 0; };
+    var start = now();
+    var MIN = reduce ? 450 : 1500; /* ensure the splash is actually seen */
+    var done = false;
+    function remove() { if (splash.parentNode) splash.parentNode.removeChild(splash); }
+    function dismiss() {
+      if (done) return; done = true;
+      root.classList.remove("splash-lock");
+      if (!reduce && window.gsap) {
+        gsap.timeline({ onComplete: remove })
+          .to(".splash__stage", { yPercent: -12, opacity: 0, duration: 0.45, ease: "power2.in" })
+          .to("#splash", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, "-=0.2");
+      } else {
+        splash.classList.add("is-done");
+        setTimeout(remove, reduce ? 60 : 650);
+      }
+    }
+    function ready() { setTimeout(dismiss, Math.max(0, MIN - (now() - start))); }
+    if (document.readyState === "complete") ready();
+    else window.addEventListener("load", ready);
+    splash.addEventListener("click", dismiss);  /* tap to skip */
+    setTimeout(dismiss, 5000);                   /* hard safety cap */
+  })();
+
   /* current year in footer */
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
